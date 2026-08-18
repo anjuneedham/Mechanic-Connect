@@ -13,11 +13,21 @@
 # leads reach an inbox instead of sitting in the dashboard.
 
 [build]
-  command = "python3 tools/build-site.py"
   publish = "site"
 
-[build.environment]
-  PYTHON_VERSION = "3.11"
+  # No build command on purpose. site/ is committed already built, so a deploy
+  # is a straight file copy with nothing that can fail in a build step.
+  #
+  # After editing anything in v2/, rebuild and commit site/ before pushing:
+  #
+  #     python3 tools/generate-v2.py && python3 tools/build-site.py
+  #
+  # To have Netlify do that instead, uncomment the two lines below. It needs
+  # Python on the build image, which is one more thing that can break a deploy.
+  #
+  # command = "python3 tools/build-site.py"
+  # [build.environment]
+  #   PYTHON_VERSION = "3.11"
 
 [[headers]]
   for = "/*"
