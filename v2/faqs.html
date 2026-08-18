@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-JM" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Spec §6 item 8: a descriptive, page-specific title. The baseline's
+     "<page> - Mechanic Connect JA" pattern and its truncated og:site_name are
+     both gone. -->
+<title>Frequently Asked Questions &mdash; Mechanic Connect JA</title>
+<meta name="description" content="Answers to common questions about Mechanic Connect JA.">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mechanic Connect JA">
+<meta property="og:title" content="Frequently Asked Questions &mdash; Mechanic Connect JA">
+<meta property="og:description" content="Answers to common questions about Mechanic Connect JA.">
+<!-- Spec §6 item 8: a real 1200x630 Open Graph image, not the 300x300 avatar
+     crop. This site is shared in WhatsApp groups; the preview is the ad. -->
+<meta property="og:image" content="assets/og-image-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Mechanic Connect JA">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+
+<!-- Bootstrap, deliberately inline and deliberately first: it marks the
+     document script-capable before the body is parsed, so the CSS below can
+     collapse the mobile nav in the very first paint. Collapsing it from a
+     deferred script instead moves the page after the visitor has already seen
+     it. One statement, no dependencies. -->
+<script>document.documentElement.className=document.documentElement.className.replace("no-js","")+" js";</script>
+
+<!-- Spec §6 item 10, with a measured deviation — see the CSS_MODE note in the
+     page generator and the performance section of COMPARISON.md. Under 20 KB
+     of CSS, same origin, cached across all seven pages. -->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="styles.css">
+
+<script src="config.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container">
+
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">MC</span>
+      <span class="brand-name">Mechanic Connect JA</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
+      <span class="nav-toggle-icon" aria-hidden="true">&#9776;</span>
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+
+    <!-- Spec §6 item 9: navigation is conversion pages only. Privacy Policy
+         and Terms of Service have moved to the footer, where legal pages
+         belong. -->
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="for-customers.html">For Customers</a></li>
+          <li><a href="for-mechanics.html">For Mechanics &amp; Garages</a></li>
+          <li><a href="faqs.html" aria-current="page">FAQs</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- Spec §6 item 2: one primary action in the header, and only one. -->
+    <div class="header-actions">
+      <a class="btn btn--primary btn--sm" href="index.html#get-the-app">Get the app</a>
+    </div>
+
+  </div>
+</header>
+
+<main id="main">
+
+<section class="section">
+  <div class="container">
+    <div class="prose">
+
+      <h1>Frequently Asked Questions</h1>
+
+      <!-- ====================================================================
+           COPY PENDING. Spec §1 requires this page's copy verbatim from
+
+               https://mechanic-connectja.mechanic-connect.net/mechanic-connect-frequently-asked-questions-faqs/
+
+           and that host is blocked by this build environment's egress policy,
+           so it could not be read. Spec §6 forbids inventing copy and spec §8
+           forbids new claims, so questions and answers the client never wrote is not written here.
+           The page's structure, meta, navigation and footer are final; only the
+           body copy is outstanding. Tracked in COMPARISON.md.
+           ==================================================================== -->
+      <div class="copy-pending">
+        <p><strong>Copy pending.</strong> The client&rsquo;s wording for this page is
+        carried over verbatim from the current site and has not been rewritten &mdash;
+        copy rewriting is a separate, client-approved step (spec &sect;8).</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <p class="footer-title">Mechanic Connect JA</p>
+        <p class="footer-note">Operated by OH-PEL AUTO LTD, Kingston, Jamaica.</p>
+        <!-- Fault #2 fixed: a real WhatsApp deep link with a prefilled message,
+             replacing the baseline's dead http://8764703144, which resolved
+             to nothing. Spec §6 item 5. -->
+        <p><a href="https://wa.me/18764703144?text=Hi%20Mechanic%20Connect%20JA%2C%20I%20need%20a%20mechanic.">WhatsApp us</a></p>
+        <!-- Fault #9 fixed: the contact address is a mailto: link. -->
+        <p><a href="mailto:mechanicconnectja@gmail.com">mechanicconnectja@gmail.com</a></p>
+      </div>
+
+      <div>
+        <p class="footer-title">Site</p>
+        <ul class="footer-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="for-customers.html">For Customers</a></li>
+          <li><a href="for-mechanics.html">For Mechanics &amp; Garages</a></li>
+          <li><a href="faqs.html">FAQs</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer-title">Follow</p>
+        <ul class="footer-list">
+          <li><a href="https://www.tiktok.com/@mechanicconnectja">TikTok</a></li>
+          <li><a href="https://www.instagram.com/mechanicconnectja/">Instagram</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <!-- Spec §6 item 3: the store badges are repeated in the footer, so the
+             download is reachable from the bottom of any page. -->
+        <p class="footer-title">Get the customer app</p>
+    <ul class="store-row" data-store-row>
+      <li data-platform="ios">
+        <a class="store-badge" data-store-link href="https://apps.apple.com/jm/app/mechanic-connect/id6754509101">
+          <img src="assets/app-store-badge.svg" width="162" height="54" alt="Download Mechanic Connect on the App Store" loading="lazy" decoding="async">
+        </a>
+      </li>
+      <li data-platform="android">
+        <a class="store-badge" data-store-link href="https://play.google.com/store/apps/details?id=com.mechanic.mechanicconnect">
+          <img src="assets/google-play-badge.svg" width="162" height="54" alt="Get Mechanic Connect on Google Play" loading="lazy" decoding="async">
+        </a>
+      </li>
+    </ul>
+        <p class="footer-note">Mechanics and garage staff: <a href="for-mechanics.html">use the staff app</a>.</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-note">Copyright &copy; 2026 Mechanic Connect JA</p>
+      <!-- Spec §6 item 9: legal lives here, not in the main navigation. -->
+      <ul class="legal-links footer-note">
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms-of-service.html">Terms of Service</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

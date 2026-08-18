@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en-JM" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Spec §6 item 8: a descriptive, page-specific title. The baseline's
+     "<page> - Mechanic Connect JA" pattern and its truncated og:site_name are
+     both gone. -->
+<title>Mechanic Connect JA &mdash; find a verified mechanic anywhere in Jamaica</title>
+<meta name="description" content="Connect with verified garages and independent mechanics across Jamaica for repairs, servicing, roadside assistance, and parts - all in one app.">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mechanic Connect JA">
+<meta property="og:title" content="Mechanic Connect JA &mdash; find a verified mechanic anywhere in Jamaica">
+<meta property="og:description" content="Connect with verified garages and independent mechanics across Jamaica for repairs, servicing, roadside assistance, and parts - all in one app.">
+<!-- Spec §6 item 8: a real 1200x630 Open Graph image, not the 300x300 avatar
+     crop. This site is shared in WhatsApp groups; the preview is the ad. -->
+<meta property="og:image" content="assets/og-image-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Mechanic Connect JA">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+
+<!-- Bootstrap, deliberately inline and deliberately first: it marks the
+     document script-capable before the body is parsed, so the CSS below can
+     collapse the mobile nav in the very first paint. Collapsing it from a
+     deferred script instead moves the page after the visitor has already seen
+     it. One statement, no dependencies. -->
+<script>document.documentElement.className=document.documentElement.className.replace("no-js","")+" js";</script>
+
+<!-- Spec §6 item 10, with a measured deviation — see the CSS_MODE note in the
+     page generator and the performance section of COMPARISON.md. Under 20 KB
+     of CSS, same origin, cached across all seven pages. -->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="styles.css">
+
+<script src="config.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container">
+
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">MC</span>
+      <span class="brand-name">Mechanic Connect JA</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
+      <span class="nav-toggle-icon" aria-hidden="true">&#9776;</span>
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+
+    <!-- Spec §6 item 9: navigation is conversion pages only. Privacy Policy
+         and Terms of Service have moved to the footer, where legal pages
+         belong. -->
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="for-customers.html">For Customers</a></li>
+          <li><a href="for-mechanics.html">For Mechanics &amp; Garages</a></li>
+          <li><a href="faqs.html">FAQs</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- Spec §6 item 2: one primary action in the header, and only one. -->
+    <div class="header-actions">
+      <a class="btn btn--primary btn--sm" href="index.html#get-the-app">Get the app</a>
+    </div>
+
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================================================================
+     FAULT #1 FIXED (spec §6 item 1). This file is the site root AND the home
+     page. On the current site the root serves a WordPress blog index and the
+     home page hides at /home/, so every direct visit, printed link and ad click
+     lands on a blog roll. Here, arriving at the root means arriving at the
+     pitch. There is no blog index in v2/.
+     ========================================================================== -->
+
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div>
+      <!-- Spec §6 item 8: exactly one h1 per page. The baseline home page had
+           two — the WordPress page title and the hero heading. -->
+      <h1>Your Trusted Mechanic, On-Demand.</h1>
+
+      <p class="lead">Connect with verified garages and independent mechanics across Jamaica for repairs, servicing, roadside assistance, and parts &mdash; all in one app.</p>
+
+      <!-- Fault #3 fixed (spec §6 item 3): real store links, above the fold.
+           The whole call to action is "download the app", and the current site
+           has no App Store or Google Play link anywhere on it. -->
+    <ul class="store-row" data-store-row>
+      <li data-platform="ios">
+        <a class="store-badge" data-store-link href="https://apps.apple.com/jm/app/mechanic-connect/id6754509101">
+          <img src="assets/app-store-badge.svg" width="162" height="54" alt="Download Mechanic Connect on the App Store" decoding="async">
+        </a>
+      </li>
+      <li data-platform="android">
+        <a class="store-badge" data-store-link href="https://play.google.com/store/apps/details?id=com.mechanic.mechanicconnect">
+          <img src="assets/google-play-badge.svg" width="162" height="54" alt="Get Mechanic Connect on Google Play" decoding="async">
+        </a>
+      </li>
+    </ul>
+      <p class="store-note">Free to download. Mechanics and garage staff need the
+        <a href="for-mechanics.html">separate staff app</a>.</p>
+
+      <p>
+        <!-- Fault #5 fixed: real buttons with 44px tap targets, not bare text
+             links. The baseline printed the line "Two main call-to-action
+             buttons:" above two unstyled links — fault #4, gone here. -->
+        <a class="btn btn--primary" href="#get-started">Tell us what you need</a>
+        <a class="btn btn--ghost" href="https://wa.me/18764703144?text=Hi%20Mechanic%20Connect%20JA%2C%20I%20need%20a%20mechanic.">WhatsApp us</a>
+      </p>
+    </div>
+
+    <div class="hero-media">
+      <!-- Spec §6 item 10: the hero is the LCP element, so it is fetched at
+           high priority and sized for the viewport rather than shipping a
+           desktop-width file to a phone. Intrinsic size is declared so the box
+           is reserved before the bytes land. -->
+      <img src="assets/hero-960.jpg"
+           srcset="assets/hero-640.jpg 640w, assets/hero-960.jpg 960w, assets/hero-1200.jpg 1200w"
+           sizes="(min-width: 1024px) 46vw, calc(100vw - 2.5rem)"
+           width="1200" height="900" fetchpriority="high" decoding="async"
+           alt="A mechanic working on a vehicle.">
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================================
+     Spec §6 item 6 — lead capture ahead of the app install. Once a visitor
+     crosses into the App Store the journey is invisible, so the only chance to
+     attribute an ad click to a real person is here, before the handover.
+     ========================================================================== -->
+<section class="section section--alt" id="get-started">
+  <div class="container container--narrow">
+
+    <p class="eyebrow">Before you download</p>
+    <h2>Tell us what you need</h2>
+    <p class="lead">Leave your details and Mechanic Connect JA will follow up on
+      WhatsApp. You can still download the app straight away.</p>
+
+    <!-- The action below is the no-JavaScript fallback. app.js overwrites it
+         with MC_CONFIG.FORM_ENDPOINT from config.js, which is the single place
+         the endpoint is configured. Keep the two the same. -->
+    <form class="lead-form" data-lead-form method="post"
+          action="https://example.invalid/REPLACE-WITH-YOUR-FORM-ENDPOINT">
+
+      <div class="field">
+        <label for="lead-name">Your name</label>
+        <input id="lead-name" name="name" type="text" autocomplete="name" required>
+      </div>
+
+      <div class="field">
+        <label for="lead-phone">Phone number
+          <span class="hint">So a mechanic can reach you on WhatsApp or by call.</span>
+        </label>
+        <input id="lead-phone" name="phone" type="tel" inputmode="tel"
+               autocomplete="tel" required>
+      </div>
+
+      <div class="field">
+        <label for="lead-parish">Parish</label>
+        <select id="lead-parish" name="parish" required>
+          <option value="">Choose your parish</option>
+          <option>Clarendon</option>
+          <option>Hanover</option>
+          <option>Kingston</option>
+          <option>Manchester</option>
+          <option>Portland</option>
+          <option>St. Andrew</option>
+          <option>St. Ann</option>
+          <option>St. Catherine</option>
+          <option>St. Elizabeth</option>
+          <option>St. James</option>
+          <option>St. Mary</option>
+          <option>St. Thomas</option>
+          <option>Trelawny</option>
+          <option>Westmoreland</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="lead-need">What do you need?</label>
+        <select id="lead-need" name="need" required>
+          <option value="">Choose one</option>
+          <option>Repairs</option>
+          <option>Servicing</option>
+          <option>Roadside assistance</option>
+          <option>Parts</option>
+          <option>Something else</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="lead-detail">Anything else? <span class="hint">Optional.</span></label>
+        <textarea id="lead-detail" name="detail" rows="3"></textarea>
+      </div>
+
+      <!-- Spec §6 item 7: UTM parameters captured from the query string and
+           carried into the submission, so an install can be traced back to the
+           post or the ad that produced it. app.js fills these; they stay empty
+           for visitors who arrive without campaign parameters. -->
+      <input type="hidden" name="utm_source" value="">
+      <input type="hidden" name="utm_medium" value="">
+      <input type="hidden" name="utm_campaign" value="">
+      <input type="hidden" name="landing_page" value="">
+
+      <button class="btn btn--primary btn--block" type="submit">Send my details</button>
+      <p class="form-legal">By sending your details you agree to our
+        <a href="privacy-policy.html">Privacy Policy</a>.</p>
+    </form>
+
+  </div>
+</section>
+
+<!-- ============================================================================
+     Spec §6 item 4 — two audiences, two apps, kept apart. The current site
+     conflates them: one undifferentiated "download the app" with no download
+     link at all.
+     ========================================================================== -->
+<section class="section" id="get-the-app">
+  <div class="container">
+
+    <h2>Two apps, two jobs</h2>
+    <p class="lead">Drivers and garage staff use different apps. Pick the one
+      that matches you.</p>
+
+    <ul class="card-grid">
+
+      <li class="card card--customer">
+        <p class="card-tag">For drivers</p>
+        <h3>I need a mechanic</h3>
+        <p>Verified service providers. No customer platform fees. Clear, upfront
+          pricing.</p>
+    <ul class="store-row" data-store-row>
+      <li data-platform="ios">
+        <a class="store-badge" data-store-link href="https://apps.apple.com/jm/app/mechanic-connect/id6754509101">
+          <img src="assets/app-store-badge.svg" width="162" height="54" alt="Download Mechanic Connect on the App Store" loading="lazy" decoding="async">
+        </a>
+      </li>
+      <li data-platform="android">
+        <a class="store-badge" data-store-link href="https://play.google.com/store/apps/details?id=com.mechanic.mechanicconnect">
+          <img src="assets/google-play-badge.svg" width="162" height="54" alt="Get Mechanic Connect on Google Play" loading="lazy" decoding="async">
+        </a>
+      </li>
+    </ul>
+        <p><a href="for-customers.html">More for customers</a></p>
+      </li>
+
+      <li class="card card--trade">
+        <p class="card-tag">For mechanics &amp; garages</p>
+        <h3>I am a mechanic</h3>
+        <p>Mechanics assigned to a garage use the separate Mechanic Connect staff
+          app.</p>
+    <ul class="store-row" data-store-row>
+      <li data-platform="android">
+        <a class="store-badge" data-store-link href="https://play.google.com/store/apps/details?id=com.mechanic.mechanics">
+          <img src="assets/google-play-badge.svg" width="162" height="54" alt="Get the Mechanic Connect staff app on Google Play" loading="lazy" decoding="async">
+        </a>
+      </li>
+    </ul>
+        <!-- No Apple listing for the staff app was supplied, so no iOS badge is
+             shown here. Add STORES.mechanic.ios in config.js when it exists;
+             nothing is invented to fill the gap. -->
+        <p><a href="for-mechanics.html">More for mechanics &amp; garages</a></p>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <h2>How It Works</h2>
+    <ol class="steps">
+      <li><strong>Download &amp; Request Service</strong><!-- COPY PENDING: the sentence following this lead-in on the client's page could not be read (host blocked). Not invented — spec §8. --></li>
+      <li><strong>Get Quotes or Book Directly</strong><!-- COPY PENDING: as above. --></li>
+      <li><strong>Job Gets Done, Pay Securely</strong><!-- COPY PENDING: as above. --></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Why Choose Mechanic Connect?</h2>
+    <ul class="reasons">
+      <li><strong>Verified Service Providers</strong><!-- COPY PENDING: trailing sentence not readable (host blocked). --></li>
+      <li><strong>No Customer Platform Fees</strong><!-- COPY PENDING: as above. --></li>
+      <li><strong>Clear, Upfront Pricing</strong><!-- COPY PENDING: as above. --></li>
+      <li><strong>Secure In-App Payments</strong><!-- COPY PENDING: as above. --></li>
+      <li><strong>Parts Made Easy (Powered by OH-PEL AUTO LIMITED)</strong><!-- COPY PENDING: as above. --></li>
+      <li><strong>Built for Jamaica, by Jamaicans</strong><!-- COPY PENDING: as above. --></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <p class="footer-title">Mechanic Connect JA</p>
+        <p class="footer-note">Operated by OH-PEL AUTO LTD, Kingston, Jamaica.</p>
+        <!-- Fault #2 fixed: a real WhatsApp deep link with a prefilled message,
+             replacing the baseline's dead http://8764703144, which resolved
+             to nothing. Spec §6 item 5. -->
+        <p><a href="https://wa.me/18764703144?text=Hi%20Mechanic%20Connect%20JA%2C%20I%20need%20a%20mechanic.">WhatsApp us</a></p>
+        <!-- Fault #9 fixed: the contact address is a mailto: link. -->
+        <p><a href="mailto:mechanicconnectja@gmail.com">mechanicconnectja@gmail.com</a></p>
+      </div>
+
+      <div>
+        <p class="footer-title">Site</p>
+        <ul class="footer-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="for-customers.html">For Customers</a></li>
+          <li><a href="for-mechanics.html">For Mechanics &amp; Garages</a></li>
+          <li><a href="faqs.html">FAQs</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer-title">Follow</p>
+        <ul class="footer-list">
+          <li><a href="https://www.tiktok.com/@mechanicconnectja">TikTok</a></li>
+          <li><a href="https://www.instagram.com/mechanicconnectja/">Instagram</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <!-- Spec §6 item 3: the store badges are repeated in the footer, so the
+             download is reachable from the bottom of any page. -->
+        <p class="footer-title">Get the customer app</p>
+    <ul class="store-row" data-store-row>
+      <li data-platform="ios">
+        <a class="store-badge" data-store-link href="https://apps.apple.com/jm/app/mechanic-connect/id6754509101">
+          <img src="assets/app-store-badge.svg" width="162" height="54" alt="Download Mechanic Connect on the App Store" loading="lazy" decoding="async">
+        </a>
+      </li>
+      <li data-platform="android">
+        <a class="store-badge" data-store-link href="https://play.google.com/store/apps/details?id=com.mechanic.mechanicconnect">
+          <img src="assets/google-play-badge.svg" width="162" height="54" alt="Get Mechanic Connect on Google Play" loading="lazy" decoding="async">
+        </a>
+      </li>
+    </ul>
+        <p class="footer-note">Mechanics and garage staff: <a href="for-mechanics.html">use the staff app</a>.</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-note">Copyright &copy; 2026 Mechanic Connect JA</p>
+      <!-- Spec §6 item 9: legal lives here, not in the main navigation. -->
+      <ul class="legal-links footer-note">
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms-of-service.html">Terms of Service</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

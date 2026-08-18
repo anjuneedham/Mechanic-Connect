@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mechanic Connect JA -</title>
+<meta property="og:site_name" content="Mechanic Connect JA -">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="styles.css">
+<script src="nav.js"></script>
+</head>
+<body class="blog home">
+
+<header class="site-header">
+  <div class="container">
+
+    <div class="site-branding">
+      <p class="site-title"><a href="index.html">Mechanic Connect JA</a></p>
+    </div>
+
+    <!-- FAULT (reproduced deliberately, spec §3 item 1): the live site outputs
+         the same menu twice — once for desktop, once for mobile. Both copies
+         are here; a media query decides which one is visible. Every nav label
+         therefore appears twice in the DOM. Do not de-duplicate in baseline. -->
+    <nav class="main-navigation" aria-label="Site Navigation">
+      <ul class="nav-menu">
+        <li class="menu-item"><a href="about-us.html">About Us</a></li>
+        <li class="menu-item"><a href="faqs.html">FAQs</a></li>
+        <li class="menu-item"><a href="for-customers.html">For Customers</a></li>
+        <li class="menu-item"><a href="for-mechanics.html">For Mechanics &amp; Garages</a></li>
+        <li class="menu-item"><a href="home.html">Mechanic Connect – Home</a></li>
+        <li class="menu-item"><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li class="menu-item"><a href="terms-of-service.html">Terms of Service</a></li>
+      </ul>
+    </nav>
+
+    <button class="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false">Menu</button>
+
+    <nav class="mobile-navigation" id="mobile-menu" aria-label="Mobile Site Navigation">
+      <ul class="nav-menu">
+        <li class="menu-item"><a href="about-us.html">About Us</a></li>
+        <li class="menu-item"><a href="faqs.html">FAQs</a></li>
+        <li class="menu-item"><a href="for-customers.html">For Customers</a></li>
+        <li class="menu-item"><a href="for-mechanics.html">For Mechanics &amp; Garages</a></li>
+        <li class="menu-item"><a href="home.html">Mechanic Connect – Home</a></li>
+        <li class="menu-item"><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li class="menu-item"><a href="terms-of-service.html">Terms of Service</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<main class="site-content">
+  <div class="container">
+
+    <!-- ====================================================================
+         FAULT #1 — THE ROUTING FAULT (spec §4). Reproduced deliberately.
+
+         This file is the root of the replica, and it is a blog index, not the
+         home page. Every direct visit, every printed link, every "search the
+         name" arrival and every ad click lands on this blog roll. The actual
+         home page is one directory further in, at home.html.
+
+         This is the single most important thing in the replica. Do not point
+         index.html at the home page in baseline/. In v2/, index.html IS the
+         home page — that is the fix.
+         ==================================================================== -->
+
+    <div class="content-area">
+
+      <div class="site-main">
+
+        <article class="post">
+          <h2 class="entry-title"><a href="index.html#post-1">Mechanic Connect JA!</a></h2>
+
+          <p class="entry-meta">
+            <span class="posted-on"><time datetime="2025-11-05">November 5, 2025</time></span>
+            <span class="byline"> / By <a href="index.html#author">Mechanic Connect JA</a></span>
+          </p>
+
+    <!-- ====================================================================
+         COPY PENDING — nothing has been written here on purpose.
+
+         Spec §1: "Fetch every page and extract the copy verbatim. Do not
+         paraphrase, do not fix typos, do not improve headlines." The source
+         page is
+
+             https://mechanic-connectja.mechanic-connect.net/
+
+         and that host is blocked by this build environment's network egress
+         policy (the proxy answers 403 to CONNECT). The copy could not be read.
+
+         Inventing the body of the client's welcome post would break spec §1 and spec §8, so this
+         region is left empty rather than filled with plausible-looking text.
+         Paste the live page's exact markup between these two markers; the
+         surrounding Astra chrome, tokens and stylesheet are already correct.
+
+         Tracked in COMPARISON.md → "Could not be determined from the live site".
+         ==================================================================== -->
+
+          <p class="entry-footer"><a href="index.html#respond">Leave a Comment</a> / <a href="index.html#category">Uncategorized</a></p>
+        </article>
+
+      </div>
+
+      <!-- ASSUMED: the widget set below is stock WordPress (Search, Recent
+           Posts, Recent Comments, Archives, Categories, Meta). The live
+           sidebar could not be read — see COMPARISON.md. The structural point
+           of the demo does not depend on which widgets these are: what matters
+           is that the root URL serves a blog chrome at all. -->
+      <aside class="widget-area">
+
+        <section class="widget widget_search">
+          <form class="search-form" role="search" method="get" action="index.html">
+            <label class="screen-reader-text" for="s">Search for:</label>
+            <input type="search" id="s" name="s" placeholder="Search &hellip;">
+            <input type="submit" value="Search">
+          </form>
+        </section>
+
+        <section class="widget widget_recent_entries">
+          <h2 class="widget-title">Recent Posts</h2>
+          <ul>
+            <li><a href="index.html#post-1">Mechanic Connect JA!</a></li>
+          </ul>
+        </section>
+
+        <section class="widget widget_recent_comments">
+          <h2 class="widget-title">Recent Comments</h2>
+          <ul>
+            <li>No comments to show.</li>
+          </ul>
+        </section>
+
+        <section class="widget widget_archive">
+          <h2 class="widget-title">Archives</h2>
+          <ul>
+            <li><a href="index.html#archive-2025-11">November 2025</a></li>
+          </ul>
+        </section>
+
+        <section class="widget widget_categories">
+          <h2 class="widget-title">Categories</h2>
+          <ul>
+            <li><a href="index.html#category">Uncategorized</a></li>
+          </ul>
+        </section>
+
+        <section class="widget widget_meta">
+          <h2 class="widget-title">Meta</h2>
+          <ul>
+            <li><a href="index.html#login">Log in</a></li>
+            <li><a href="index.html#feed">Entries feed</a></li>
+            <li><a href="index.html#comments-feed">Comments feed</a></li>
+            <li><a href="https://wordpress.org/">WordPress.org</a></li>
+          </ul>
+        </section>
+
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+
+    <p class="footer-links"><a href="for-customers.html">For Customers</a> | <a href="for-mechanics.html">For Mechanics</a> | <a href="about-us.html">About Us</a> | <a href="faqs.html">FAQ</a></p>
+
+    <!-- FAULT #2 (reproduced deliberately, spec §3): the WhatsApp href is
+         "http://8764703144". That is not a URL — the browser resolves it as a
+         host name and the link opens nothing. The primary contact route on the
+         site is dead. Fixed in v2/ as https://wa.me/18764703144. -->
+    <p class="footer-social"><a href="http://8764703144">WhatsApp</a> | <a href="https://www.tiktok.com/@mechanicconnectja">TikTok</a> | <a href="https://www.instagram.com/mechanicconnectja/">Instagram</a></p>
+
+    <!-- FAULT #9 (reproduced deliberately): the contact address is plain text,
+         not a mailto: link. On mobile it cannot be tapped to compose. -->
+    <p class="footer-contact">Contact: mechanicconnectja@gmail.com</p>
+
+    <p class="footer-copyright">Copyright &copy; 2026 Mechanic Connect JA | Powered by Astra WordPress Theme</p>
+
+  </div>
+</footer>
+
+<a id="ast-scroll-top" href="#" aria-label="Scroll to Top">Scroll to Top</a>
+
+</body>
+</html>
