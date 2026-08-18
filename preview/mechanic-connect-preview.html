@@ -1261,8 +1261,6 @@ window.MC_CONFIG = {
     <nav class="site-nav" id="site-nav" aria-label="Main">
       <ul>
           <li><a href="#top" aria-current="page">Home</a></li>
-          <li><a href="#get-the-app">For Customers</a></li>
-          <li><a href="#get-the-app">For Mechanics &amp; Garages</a></li>
           <li><a href="https://claude.ai/code/artifact/e93039e7-b0db-48c2-acbd-76f67563c6ba">Free guide</a></li>
       </ul>
     </nav>
@@ -1436,8 +1434,8 @@ window.MC_CONFIG = {
       <input type="hidden" name="landing_page" value="">
 
       <button class="btn btn--primary btn--block" type="submit">Send my details</button>
-      <p class="form-legal">By sending your details you agree to our
-        Privacy Policy.</p>
+      <p class="form-legal">We use your details to send the guide and to put you
+        in touch with a mechanic. Nothing else, and we do not pass them on.</p>
     </form>
 
   </div>
@@ -1546,8 +1544,8 @@ window.MC_CONFIG = {
         <p class="footer-title">Site</p>
         <ul class="footer-list">
           <li><a href="#top">Home</a></li>
-          <li><a href="#get-the-app">For Customers</a></li>
-          <li><a href="#get-the-app">For Mechanics &amp; Garages</a></li>
+          <li><a href="https://claude.ai/code/artifact/e93039e7-b0db-48c2-acbd-76f67563c6ba">The free guide</a></li>
+          <li><a href="#get-the-app">Get the app</a></li>
         </ul>
       </div>
 
@@ -1582,9 +1580,10 @@ window.MC_CONFIG = {
 
     <div class="footer-bottom">
       <p class="footer-note">Copyright &copy; 2026 Mechanic Connect JA</p>
-      <!-- Spec §6 item 9: legal lives here, not in the main navigation. -->
-      <ul class="legal-links footer-note">
-      </ul>
+      <!-- Legal pages belong here rather than in the main navigation. They go
+           back the moment the client's Privacy Policy and Terms copy arrives —
+           see LIVE_PAGES at the top of tools/generate-v2.py. -->
+      <p class="footer-note">Privacy Policy and Terms of Service coming shortly.</p>
     </div>
 
   </div>

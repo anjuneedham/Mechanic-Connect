@@ -63,10 +63,6 @@
     <nav class="site-nav" id="site-nav" aria-label="Main">
       <ul>
           <li><a href="index.html" aria-current="page">Home</a></li>
-          <li><a href="for-customers.html">For Customers</a></li>
-          <li><a href="for-mechanics.html">For Mechanics &amp; Garages</a></li>
-          <li><a href="faqs.html">FAQs</a></li>
-          <li><a href="about-us.html">About Us</a></li>
           <li><a href="guide.html">Free guide</a></li>
       </ul>
     </nav>
@@ -115,7 +111,7 @@
       </li>
     </ul>
       <p class="store-note">Free to download. Mechanics and garage staff need the
-        <a href="for-mechanics.html">separate staff app</a>.</p>
+        <a href="#get-the-app">separate staff app</a>.</p>
 
       <p>
         <!-- Fault #5 fixed: real buttons with 44px tap targets, not bare text
@@ -240,8 +236,8 @@
       <input type="hidden" name="landing_page" value="">
 
       <button class="btn btn--primary btn--block" type="submit">Send my details</button>
-      <p class="form-legal">By sending your details you agree to our
-        <a href="privacy-policy.html">Privacy Policy</a>.</p>
+      <p class="form-legal">We use your details to send the guide and to put you
+        in touch with a mechanic. Nothing else, and we do not pass them on.</p>
     </form>
 
   </div>
@@ -278,7 +274,7 @@
         </a>
       </li>
     </ul>
-        <p><a href="for-customers.html">More for customers</a></p>
+        <p><a href="#get-the-app">More for customers</a></p>
       </li>
 
       <li class="card card--trade">
@@ -296,7 +292,7 @@
         <!-- No Apple listing for the staff app was supplied, so no iOS badge is
              shown here. Add STORES.mechanic.ios in config.js when it exists;
              nothing is invented to fill the gap. -->
-        <p><a href="for-mechanics.html">More for mechanics &amp; garages</a></p>
+        <p><a href="#get-the-app">More for mechanics &amp; garages</a></p>
       </li>
 
     </ul>
@@ -350,10 +346,8 @@
         <p class="footer-title">Site</p>
         <ul class="footer-list">
           <li><a href="index.html">Home</a></li>
-          <li><a href="for-customers.html">For Customers</a></li>
-          <li><a href="for-mechanics.html">For Mechanics &amp; Garages</a></li>
-          <li><a href="faqs.html">FAQs</a></li>
-          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="guide.html">The free guide</a></li>
+          <li><a href="index.html#get-the-app">Get the app</a></li>
         </ul>
       </div>
 
@@ -381,18 +375,17 @@
         </a>
       </li>
     </ul>
-        <p class="footer-note">Mechanics and garage staff: <a href="for-mechanics.html">use the staff app</a>.</p>
+        <p class="footer-note">Mechanics and garage staff: <a href="#get-the-app">use the staff app</a>.</p>
       </div>
 
     </div>
 
     <div class="footer-bottom">
       <p class="footer-note">Copyright &copy; 2026 Mechanic Connect JA</p>
-      <!-- Spec §6 item 9: legal lives here, not in the main navigation. -->
-      <ul class="legal-links footer-note">
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="terms-of-service.html">Terms of Service</a></li>
-      </ul>
+      <!-- Legal pages belong here rather than in the main navigation. They go
+           back the moment the client's Privacy Policy and Terms copy arrives —
+           see LIVE_PAGES at the top of tools/generate-v2.py. -->
+      <p class="footer-note">Privacy Policy and Terms of Service coming shortly.</p>
     </div>
 
   </div>

@@ -10,12 +10,32 @@ PLAY_CUSTOMER = ("https://play.google.com/store/apps/details?"
                  "id=com.mechanic.mechanicconnect")
 PLAY_MECHANIC = "https://play.google.com/store/apps/details?id=com.mechanic.mechanics"
 
+# ---------------------------------------------------------------------------
+# WHICH PAGES GO LIVE
+#
+# Only these are deployed for now. The rest are still generated into v2/ and
+# kept in the repository — they are waiting on the client's copy, and shipping
+# them empty would be worse than not shipping them.
+#
+# To put one live later: add it to LIVE_PAGES, put it back in NAV, and rerun
+#   python3 tools/generate-v2.py && python3 tools/build-site.py
+# Links to it stop being rewritten automatically. Nothing else to change.
+# ---------------------------------------------------------------------------
+LIVE_PAGES = {"index.html", "guide.html", "thanks.html"}
+
+# Where a link should point while its page is not live. Anchors on the home
+# page, which already carries the substance of both audience pages.
+NOT_LIVE_YET = {
+    "for-customers.html": "#get-the-app",
+    "for-mechanics.html": "#get-the-app",
+    "faqs.html": "#get-started",
+    "about-us.html": "#top",
+    "privacy-policy.html": None,      # None = unwrap the link, keep the words
+    "terms-of-service.html": None,
+}
+
 NAV = [
     ("Home", "index.html"),
-    ("For Customers", "for-customers.html"),
-    ("For Mechanics &amp; Garages", "for-mechanics.html"),
-    ("FAQs", "faqs.html"),
-    ("About Us", "about-us.html"),
     ("Free guide", "guide.html"),
 ]
 
@@ -228,10 +248,8 @@ FOOTER = u"""
         <p class="footer-title">Site</p>
         <ul class="footer-list">
           <li><a href="index.html">Home</a></li>
-          <li><a href="for-customers.html">For Customers</a></li>
-          <li><a href="for-mechanics.html">For Mechanics &amp; Garages</a></li>
-          <li><a href="faqs.html">FAQs</a></li>
-          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="guide.html">The free guide</a></li>
+          <li><a href="index.html#get-the-app">Get the app</a></li>
         </ul>
       </div>
 
@@ -255,11 +273,10 @@ FOOTER = u"""
 
     <div class="footer-bottom">
       <p class="footer-note">Copyright &copy; 2026 Mechanic Connect JA</p>
-      <!-- Spec §6 item 9: legal lives here, not in the main navigation. -->
-      <ul class="legal-links footer-note">
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="terms-of-service.html">Terms of Service</a></li>
-      </ul>
+      <!-- Legal pages belong here rather than in the main navigation. They go
+           back the moment the client's Privacy Policy and Terms copy arrives —
+           see LIVE_PAGES at the top of tools/generate-v2.py. -->
+      <p class="footer-note">Privacy Policy and Terms of Service coming shortly.</p>
     </div>
 
   </div>
@@ -290,7 +307,29 @@ def copy_pending(url, what):
 """ % (url, what)
 
 
+def localise(html, page):
+    """Point links at something that exists. A link to a page we have not
+    deployed is a 404 in front of a customer; an anchor on the home page is
+    not. Links whose target has no sensible stand-in are unwrapped so the
+    words survive without the link."""
+    import re as _re
+    for target, replacement in NOT_LIVE_YET.items():
+        if target in LIVE_PAGES:
+            continue
+        if replacement is None:
+            html = _re.sub(r'<a href="%s"[^>]*>(.*?)</a>' % _re.escape(target),
+                           r"\1", html, flags=_re.S)
+            continue
+        # An anchor is only same-page on the home page; elsewhere it needs the
+        # home page in front of it.
+        href = replacement if page == "index.html" else "index.html" + replacement
+        html = html.replace('href="%s"' % target, 'href="%s"' % href)
+        html = html.replace('href="%s#' % target, 'href="%s#' % href.split("#")[0])
+    return html
+
+
 def write(path, text):
+    text = localise(text, os.path.basename(path))
     with io.open(path, "w", encoding="utf-8") as fh:
         fh.write(text)
     print("wrote", path, os.path.getsize(path), "bytes")
@@ -457,8 +496,8 @@ index = head(
       <input type="hidden" name="landing_page" value="">
 
       <button class="btn btn--primary btn--block" type="submit">Send my details</button>
-      <p class="form-legal">By sending your details you agree to our
-        <a href="privacy-policy.html">Privacy Policy</a>.</p>
+      <p class="form-legal">We use your details to send the guide and to put you
+        in touch with a mechanic. Nothing else, and we do not pass them on.</p>
     </form>
 
   </div>

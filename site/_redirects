@@ -1,19 +1,19 @@
 # Short, speakable paths — the kind you can read out on radio or print on a
 # flyer, which the long subdomain never allowed.
-/guide          /guide.html          200
-/free-guide     /guide.html          301
-/customers      /for-customers.html  301
-/mechanics      /for-mechanics.html  301
-/download       /index.html#get-the-app  301
-/thanks         /thanks.html         200
+/guide          /guide.html   200
+/free-guide     /guide.html   301
+/thanks         /thanks.html  200
+/download       /#get-the-app 301
 
 # The old WordPress permalinks, so anything already printed or shared still
-# lands somewhere sensible instead of a 404.
-/home           /                    301
-/home/          /                    301
-/about-us/      /about-us.html       301
-/for-customers/ /for-customers.html  301
-/for-mechanics/ /for-mechanics.html  301
-/privacy-policy-2/ /privacy-policy.html 301
-/mechanic-connect-frequently-asked-questions-faqs/ /faqs.html 301
-/terms-of-service-end-user-agreement-for-mechanic-connect/ /terms-of-service.html 301
+# lands somewhere sensible instead of a 404. The pages that have not been
+# rebuilt yet go to the home page rather than nowhere; give each its own
+# destination as it goes live.
+/home                     /              301
+/home/                    /              301
+/for-customers/           /#get-the-app  301
+/for-mechanics/           /#get-the-app  301
+/about-us/                /              301
+/privacy-policy-2/        /              301
+/mechanic-connect-frequently-asked-questions-faqs/ / 301
+/terms-of-service-end-user-agreement-for-mechanic-connect/ / 301
