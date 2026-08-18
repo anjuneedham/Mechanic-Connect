@@ -1,0 +1,26 @@
+# Netlify configuration for Mechanic Connect JA.
+#
+# Deploying, either way:
+#
+#   Drag and drop — drop the site/ folder onto https://app.netlify.com/drop.
+#     It is committed to this repository, already built. Nothing else needed.
+#
+#   Git — connect this repository in Netlify. The settings below are read
+#     automatically; there is nothing to type into the build settings form.
+#
+# Forms are picked up from the deployed HTML at deploy time. After the first
+# deploy, turn on notifications at Forms > Settings > Form notifications so
+# leads reach an inbox instead of sitting in the dashboard.
+
+[build]
+  command = "python3 tools/build-site.py"
+  publish = "site"
+
+[build.environment]
+  PYTHON_VERSION = "3.11"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

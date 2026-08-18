@@ -7,13 +7,13 @@
 <!-- Spec §6 item 8: a descriptive, page-specific title. The baseline's
      "<page> - Mechanic Connect JA" pattern and its truncated og:site_name are
      both gone. -->
-<title>Terms of Service &mdash; Mechanic Connect JA</title>
-<meta name="description" content="The terms of service and end-user agreement for Mechanic Connect JA.">
+<title>Thank you &mdash; Mechanic Connect JA</title>
+<meta name="description" content="Your guide is ready to download, and Mechanic Connect JA will follow up on WhatsApp.">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mechanic Connect JA">
-<meta property="og:title" content="Terms of Service &mdash; Mechanic Connect JA">
-<meta property="og:description" content="The terms of service and end-user agreement for Mechanic Connect JA.">
+<meta property="og:title" content="Thank you &mdash; Mechanic Connect JA">
+<meta property="og:description" content="Your guide is ready to download, and Mechanic Connect JA will follow up on WhatsApp.">
 <!-- Spec §6 item 8: a real 1200x630 Open Graph image, not the 300x300 avatar
      crop. This site is shared in WhatsApp groups; the preview is the ad. -->
 <meta property="og:image" content="assets/og-image-1200x630.jpg">
@@ -82,31 +82,63 @@
 <main id="main">
 
 <section class="section">
-  <div class="container">
+  <div class="container container--narrow">
     <div class="prose">
 
-      <h1>Terms of Service</h1>
+      <p class="eyebrow">Got it</p>
+      <h1>Thanks<span id="lead-name"></span> &mdash; we have your details.</h1>
+      <p class="lead">Someone from Mechanic Connect JA will follow up on WhatsApp.
+        In the meantime, here is the guide.</p>
 
-      <!-- ====================================================================
-           COPY PENDING. Spec §1 requires this page's copy verbatim from
-
-               https://mechanic-connectja.mechanic-connect.net/terms-of-service-end-user-agreement-for-mechanic-connect/
-
-           and that host is blocked by this build environment's egress policy,
-           so it could not be read. Spec §6 forbids inventing copy and spec §8
-           forbids new claims, so the text of a binding end-user agreement is not written here.
-           The page's structure, meta, navigation and footer are final; only the
-           body copy is outstanding. Tracked in COMPARISON.md.
-           ==================================================================== -->
-      <div class="copy-pending">
-        <p><strong>Copy pending.</strong> The client&rsquo;s wording for this page is
-        carried over verbatim from the current site and has not been rewritten &mdash;
-        copy rewriting is a separate, client-approved step (spec &sect;8).</p>
+      <div class="lead-form" style="margin-bottom:var(--space-6)">
+        <p class="eyebrow">Your free guide</p>
+        <h2 style="margin-bottom:var(--space-3)">The Roadside Job Card</h2>
+        <p>Six pages: the roadside check, how to describe a fault, the eight
+          questions to ask before work starts, how to read a quote, and a
+          fill-in card for your glovebox.</p>
+        <p>
+          <a class="btn btn--primary" href="assets/The-Roadside-Job-Card.pdf"
+             download="The-Roadside-Job-Card.pdf">Download the PDF</a>
+          <a class="btn btn--ghost" id="wa-link"
+             href="https://wa.me/18764703144?text=Hi%20Mechanic%20Connect%20JA%2C%20I%20need%20a%20mechanic.">Message us on WhatsApp</a>
+        </p>
       </div>
+
+      <h2>While you are here</h2>
+      <p>
+        <a class="btn btn--ghost" href="index.html#get-the-app">Get the app</a>
+        <a class="btn btn--ghost" href="for-customers.html">For customers</a>
+        <a class="btn btn--ghost" href="for-mechanics.html">For mechanics &amp; garages</a>
+      </p>
 
     </div>
   </div>
 </section>
+
+<script>
+/* Personalise from what the visitor just typed. Nothing is stored beyond this
+   browser session, and the page works untouched if it is not there. */
+(function () {
+  var raw;
+  try { raw = window.sessionStorage.getItem("mc_lead"); } catch (e) { return; }
+  if (!raw) { return; }
+  var lead;
+  try { lead = JSON.parse(raw); } catch (e) { return; }
+
+  if (lead.name) {
+    document.getElementById("lead-name").textContent =
+      ", " + String(lead.name).split(" ")[0];
+  }
+
+  var parts = ["Hi Mechanic Connect JA - I just requested The Roadside Job Card."];
+  if (lead.name) { parts.push("Name: " + lead.name); }
+  if (lead.parish) { parts.push("Parish: " + lead.parish); }
+  if (lead.need) { parts.push("I need: " + lead.need); }
+  document.getElementById("wa-link").href =
+    "https://wa.me/18764703144?text=" + encodeURIComponent(parts.join("
+"));
+})();
+</script>
 
 </main>
 

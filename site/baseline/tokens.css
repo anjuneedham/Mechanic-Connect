@@ -1,0 +1,97 @@
+/* ============================================================================
+   baseline/tokens.css — design tokens for the Mechanic Connect JA replica
+   ----------------------------------------------------------------------------
+   PROVENANCE NOTE — READ THIS FIRST
+
+   Spec §1 requires these values to be extracted from the rendered CSS of the
+   live site at https://mechanic-connectja.mechanic-connect.net/. That host is
+   blocked by this build environment's network egress policy (the proxy answers
+   403 to CONNECT for every outbound host), so no value below was measured.
+
+   Per spec §1, every value that could not be determined therefore falls back to
+   the stock Astra theme default and is marked:
+
+       ASSUMED — Astra default
+
+   Anyone continuing this build from a machine with network access should open
+   the live site, read the computed styles, and replace the values in this file.
+   Nothing else in the replica hard-codes a colour, size or spacing value, so
+   correcting this one file corrects the whole baseline.
+   ========================================================================== */
+
+:root {
+  /* --- Typography: body ------------------------------------------------- */
+  /* ASSUMED — Astra default ("System Font" stack, the theme's out-of-box body font) */
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --font-size-body: 15px;   /* ASSUMED — Astra default */
+  --font-weight-body: 400;  /* ASSUMED — Astra default */
+  --line-height-body: 1.65; /* ASSUMED — Astra default */
+
+  /* --- Typography: headings h1–h4 --------------------------------------- */
+  /* ASSUMED — Astra defaults. Astra ships no distinct heading family, so
+     headings inherit the body stack at weight 400 (not 700). */
+  --font-heading: var(--font-body);
+  --font-weight-heading: 400;
+  --line-height-heading: 1.4;
+
+  --font-size-h1: 48px; /* ASSUMED — Astra default */
+  --font-size-h2: 42px; /* ASSUMED — Astra default */
+  --font-size-h3: 30px; /* ASSUMED — Astra default */
+  --font-size-h4: 20px; /* ASSUMED — Astra default */
+
+  /* Astra scales headings down on small screens; these are the theme's
+     tablet/mobile steps. ASSUMED — Astra default */
+  --font-size-h1-mobile: 30px;
+  --font-size-h2-mobile: 26px;
+  --font-size-h3-mobile: 22px;
+  --font-size-h4-mobile: 18px;
+
+  /* --- Colour ----------------------------------------------------------- */
+  --color-link: #0170b9;        /* ASSUMED — Astra default theme colour */
+  --color-link-hover: #3a3a3a;  /* ASSUMED — Astra default */
+  --color-text: #3a3a3a;        /* ASSUMED — Astra default */
+  --color-heading: #3a3a3a;     /* ASSUMED — Astra default */
+  --color-page-bg: #ffffff;     /* ASSUMED — Astra default */
+  --color-content-bg: #ffffff;  /* ASSUMED — Astra default */
+  --color-border: #eaeaea;      /* ASSUMED — Astra default */
+
+  /* --- Buttons ---------------------------------------------------------- */
+  /* Recorded for completeness. NOTE: the home page CTAs on the live site are
+     plain text links, not buttons (spec §3 item 7 / fault #5), so nothing in
+     baseline/ actually consumes these. They are here because spec §1 asks for
+     them and so that v2 has a documented starting point. */
+  --button-bg: #0170b9;         /* ASSUMED — Astra default */
+  --button-color: #ffffff;      /* ASSUMED — Astra default */
+  --button-bg-hover: #3a3a3a;   /* ASSUMED — Astra default */
+  --button-radius: 2px;         /* ASSUMED — Astra default */
+  --button-padding: 10px 40px;  /* ASSUMED — Astra default (10px v / 40px h) */
+  --button-border-width: 0;     /* ASSUMED — Astra default */
+
+  /* --- Layout ----------------------------------------------------------- */
+  --container-max-width: 1200px; /* ASSUMED — Astra default content width */
+  --container-padding: 20px;     /* ASSUMED — Astra default */
+  --content-spacing: 1.6em;      /* ASSUMED — Astra default paragraph margin */
+
+  /* --- Header ----------------------------------------------------------- */
+  --header-bg: #ffffff;           /* ASSUMED — Astra default */
+  --header-padding-block: 1em;    /* ASSUMED — Astra default */
+  --site-title-size: 35px;        /* ASSUMED — Astra default site title size */
+  --site-title-color: #222222;    /* ASSUMED — Astra default */
+  --nav-font-size: 15px;          /* ASSUMED — Astra default (inherits body) */
+  --nav-item-padding: 0 1em;      /* ASSUMED — Astra default */
+  --nav-link-color: #3a3a3a;      /* ASSUMED — Astra default */
+  --nav-link-color-hover: #0170b9;/* ASSUMED — Astra default */
+  --header-border-color: #eaeaea; /* ASSUMED — Astra default */
+
+  /* --- Footer ----------------------------------------------------------- */
+  --footer-bg: #f9f9f9;          /* ASSUMED — Astra default footer bar */
+  --footer-color: #3a3a3a;       /* ASSUMED — Astra default */
+  --footer-link-color: #0170b9;  /* ASSUMED — Astra default */
+  --footer-font-size: 15px;      /* ASSUMED — Astra default */
+  --footer-padding-block: 2em;   /* ASSUMED — Astra default */
+
+  /* --- Breakpoints (spec §2, not measured from the live site) ----------- */
+  --bp-tablet: 768px;
+  --bp-desktop: 1024px;
+}

@@ -16,6 +16,7 @@ NAV = [
     ("For Mechanics &amp; Garages", "for-mechanics.html"),
     ("FAQs", "faqs.html"),
     ("About Us", "about-us.html"),
+    ("Free guide", "guide.html"),
 ]
 
 # --- critical CSS ------------------------------------------------------------
@@ -342,18 +343,24 @@ index = head(
       </p>
     </div>
 
-    <div class="hero-media">
-      <!-- Spec §6 item 10: the hero is the LCP element, so it is fetched at
-           high priority and sized for the viewport rather than shipping a
-           desktop-width file to a phone. Intrinsic size is declared so the box
-           is reserved before the bytes land. -->
-      <img src="assets/hero-960.jpg"
-           srcset="assets/hero-640.jpg 640w, assets/hero-960.jpg 960w, assets/hero-1200.jpg 1200w"
-           sizes="(min-width: 1024px) 46vw, calc(100vw - 2.5rem)"
-           width="1200" height="900" fetchpriority="high" decoding="async"
-           alt="A mechanic working on a vehicle.">
+    <!-- A designed panel, not a photograph. The client's own photography has
+         not been supplied, and a stock image of somebody else's garage would be
+         a worse lie than no photograph at all. Swap this block for an <img>
+         when real photography arrives — the grid column is already sized. -->
+    <div class="hero-panel">
+      <div class="hero-panel-top">
+        <span class="hero-panel-mark">MC</span>
+        <p class="hero-panel-eyebrow">Verified network &middot; Islandwide</p>
+      </div>
+      <ul class="hero-panel-list">
+        <li>Repairs</li>
+        <li>Servicing</li>
+        <li>Roadside assistance</li>
+        <li>Parts</li>
+      </ul>
+      <p class="hero-panel-foot">Garages and independent mechanics,
+        checked before they take work.</p>
     </div>
-
   </div>
 </section>
 
@@ -370,11 +377,24 @@ index = head(
     <p class="lead">Leave your details and Mechanic Connect JA will follow up on
       WhatsApp. You can still download the app straight away.</p>
 
-    <!-- The action below is the no-JavaScript fallback. app.js overwrites it
-         with MC_CONFIG.FORM_ENDPOINT from config.js, which is the single place
-         the endpoint is configured. Keep the two the same. -->
-    <form class="lead-form" data-lead-form method="post"
-          action="https://example.invalid/REPLACE-WITH-YOUR-FORM-ENDPOINT">
+    <!-- Netlify Forms. Three things make this work, and all three are required:
+         data-netlify="true" (Netlify's post-processor finds the form at deploy
+         time), the hidden form-name input (identifies the submission), and the
+         honeypot field below (spam trap, hidden from people). Submissions land
+         in the Netlify dashboard under Forms > mechanic-request, and can be
+         forwarded to email or a webhook from there.
+
+         action="/thanks.html" is the no-JavaScript path: the browser posts,
+         Netlify records, and the visitor lands on the thank-you page. With
+         JavaScript on, app.js posts the same body over fetch and then sends the
+         visitor to the same page — see initForm() there. -->
+    <form class="lead-form" data-lead-form name="mechanic-request" method="POST"
+          data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
+
+      <input type="hidden" name="form-name" value="mechanic-request">
+      <p class="hp">
+        <label>Leave this field empty<input name="bot-field" tabindex="-1" autocomplete="off"></label>
+      </p>
 
       <div class="field">
         <label for="lead-name">Your name</label>
@@ -588,6 +608,77 @@ mechanics = head(
         "mechanic- and garage-facing marketing copy"),
 } + FOOTER
 write(V + "for-mechanics.html", mechanics)
+
+# =============================================================== thanks.html
+# Where both forms land: the main site's "Tell us what you need" and the guide
+# page's download form. It greets the visitor by name when sessionStorage
+# carried it across, hands over the PDF, and offers a WhatsApp message already
+# filled in with what they told us.
+thanks = head(
+    "Thank you &mdash; Mechanic Connect JA",
+    "Your guide is ready to download, and Mechanic Connect JA will follow up on "
+    "WhatsApp.",
+    "",
+) + u"""
+<section class="section">
+  <div class="container container--narrow">
+    <div class="prose">
+
+      <p class="eyebrow">Got it</p>
+      <h1>Thanks<span id="lead-name"></span> &mdash; we have your details.</h1>
+      <p class="lead">Someone from Mechanic Connect JA will follow up on WhatsApp.
+        In the meantime, here is the guide.</p>
+
+      <div class="lead-form" style="margin-bottom:var(--space-6)">
+        <p class="eyebrow">Your free guide</p>
+        <h2 style="margin-bottom:var(--space-3)">The Roadside Job Card</h2>
+        <p>Six pages: the roadside check, how to describe a fault, the eight
+          questions to ask before work starts, how to read a quote, and a
+          fill-in card for your glovebox.</p>
+        <p>
+          <a class="btn btn--primary" href="assets/The-Roadside-Job-Card.pdf"
+             download="The-Roadside-Job-Card.pdf">Download the PDF</a>
+          <a class="btn btn--ghost" id="wa-link"
+             href="%(wa)s">Message us on WhatsApp</a>
+        </p>
+      </div>
+
+      <h2>While you are here</h2>
+      <p>
+        <a class="btn btn--ghost" href="index.html#get-the-app">Get the app</a>
+        <a class="btn btn--ghost" href="for-customers.html">For customers</a>
+        <a class="btn btn--ghost" href="for-mechanics.html">For mechanics &amp; garages</a>
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<script>
+/* Personalise from what the visitor just typed. Nothing is stored beyond this
+   browser session, and the page works untouched if it is not there. */
+(function () {
+  var raw;
+  try { raw = window.sessionStorage.getItem("mc_lead"); } catch (e) { return; }
+  if (!raw) { return; }
+  var lead;
+  try { lead = JSON.parse(raw); } catch (e) { return; }
+
+  if (lead.name) {
+    document.getElementById("lead-name").textContent =
+      ", " + String(lead.name).split(" ")[0];
+  }
+
+  var parts = ["Hi Mechanic Connect JA - I just requested The Roadside Job Card."];
+  if (lead.name) { parts.push("Name: " + lead.name); }
+  if (lead.parish) { parts.push("Parish: " + lead.parish); }
+  if (lead.need) { parts.push("I need: " + lead.need); }
+  document.getElementById("wa-link").href =
+    "https://wa.me/18764703144?text=" + encodeURIComponent(parts.join("\n"));
+})();
+</script>
+""" % {"wa": WA} + FOOTER
+write(V + "thanks.html", thanks)
 
 # ================================================================ simple pages
 SIMPLE = [
