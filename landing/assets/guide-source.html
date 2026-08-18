@@ -1,0 +1,225 @@
+<!DOCTYPE html><html lang="en-JM"><head><meta charset="utf-8"><title>The Roadside Job Card</title>
+<style>
+@page { size: A4; margin: 16mm 15mm 14mm; }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin:0; font-family:"Bitstream Charter",Charter,"DejaVu Serif",Georgia,serif;
+       font-size:10.2pt; line-height:1.5; color:#101a26; }
+h1,h2,h3,.lbl,.num,.k { font-family:"DejaVu Sans",Arial,sans-serif; }
+.mono { font-family:"DejaVu Sans Mono",monospace; }
+
+/* cover */
+.cover { height:247mm; display:flex; flex-direction:column; justify-content:space-between;
+         page-break-after:always; }
+.rule { height:6px; background:#0170b9; }
+.rule.gold { background:#e39400; }
+.brandline { display:flex; justify-content:space-between; align-items:baseline;
+             font-family:"DejaVu Sans Mono",monospace; font-size:7.6pt;
+             letter-spacing:.14em; text-transform:uppercase; color:#4a5a68;
+             border-bottom:1px solid #c9d2da; padding-bottom:6px; }
+.cover h1 { font-size:40pt; line-height:1.02; margin:0 0 10mm; letter-spacing:-.025em; max-width:150mm; }
+.cover .kicker { font-family:"DejaVu Sans Mono",monospace; font-size:8pt; letter-spacing:.2em;
+                 text-transform:uppercase; color:#0170b9; margin:0 0 6mm; }
+.cover .sub { font-size:13pt; line-height:1.45; max-width:135mm; color:#2c3b48; margin:0; }
+.card { border:1.5px solid #101a26; padding:7mm 8mm; }
+.card .k { font-size:7.6pt; letter-spacing:.16em; text-transform:uppercase; color:#4a5a68; }
+.card ul { margin:3mm 0 0; padding-left:5mm; }
+.card li { margin-bottom:1.6mm; }
+
+/* interior */
+h2 { font-size:16pt; letter-spacing:-.01em; margin:0 0 1.5mm; }
+.eyebrow { font-family:"DejaVu Sans Mono",monospace; font-size:7.4pt; letter-spacing:.2em;
+           text-transform:uppercase; color:#0170b9; margin:0 0 1.5mm; }
+section { margin-bottom:7.5mm; }
+.hr { border-top:1px solid #c9d2da; margin:0 0 4mm; padding-top:2mm; }
+p { margin:0 0 3mm; }
+ol.steps { counter-reset:s; list-style:none; margin:0; padding:0; }
+ol.steps li { counter-increment:s; position:relative; padding-left:11mm; margin-bottom:3.2mm; }
+ol.steps li::before { content:counter(s,decimal-leading-zero); position:absolute; left:0; top:.2mm;
+  font-family:"DejaVu Sans Mono",monospace; font-size:8.4pt; color:#0170b9; font-weight:bold; }
+ul.check { list-style:none; margin:0; padding:0; }
+ul.check li { position:relative; padding-left:8mm; margin-bottom:2.4mm; }
+ul.check li::before { content:""; position:absolute; left:0; top:1.1mm; width:3.6mm; height:3.6mm;
+  border:1.2px solid #101a26; }
+.q { font-weight:bold; }
+.two { display:flex; gap:7mm; }
+.two > div { flex:1; }
+.note { background:#eef3f7; border-left:3px solid #0170b9; padding:4mm 5mm; font-size:9.6pt; }
+.note.warn { background:#fdf3e3; border-left-color:#e39400; }
+table { width:100%; border-collapse:collapse; font-size:9.4pt; }
+th,td { text-align:left; padding:2.2mm 2mm; border-bottom:1px solid #c9d2da; vertical-align:top; }
+th { font-family:"DejaVu Sans",sans-serif; font-size:7.6pt; letter-spacing:.12em;
+     text-transform:uppercase; color:#4a5a68; }
+.fill { border-bottom:1px solid #8a97a3; display:inline-block; min-width:44mm; }
+.jobcard { border:1.5px solid #101a26; padding:6mm; }
+.jobcard .row { display:flex; gap:6mm; margin-bottom:4mm; }
+.jobcard .row > div { flex:1; font-size:9.4pt; }
+.foot { position:running(f); }
+.pagefoot { font-family:"DejaVu Sans Mono",monospace; font-size:7.2pt; letter-spacing:.12em;
+            color:#6b7885; text-transform:uppercase; border-top:1px solid #c9d2da;
+            padding-top:2.5mm; margin-top:6mm; display:flex; justify-content:space-between; }
+.pb { page-break-before:always; }
+</style></head><body>
+
+<div class="cover">
+  <div>
+    <div class="rule"></div>
+    <div class="brandline" style="margin-top:5mm;"><span>Mechanic Connect JA</span><span>OH-PEL Auto Ltd &middot; Kingston</span></div>
+    <p class="kicker" style="margin-top:22mm;">Free guide &middot; For Jamaican drivers</p>
+    <h1>The Roadside Job Card</h1>
+    <p class="sub">What to check, what to say, and what to ask before anyone
+      touches your vehicle &mdash; so a small problem stays a small bill.</p>
+  </div>
+  <div class="card">
+    <div class="k">Inside</div>
+    <ul>
+      <li>The six-point check to run before you call anyone</li>
+      <li>How to describe a fault so you are not guessed at</li>
+      <li>Eight questions to ask before work starts</li>
+      <li>How to read a quote &mdash; and what a fair one contains</li>
+      <li>Parts: new, aftermarket or used, and what to ask for each</li>
+      <li>Six signs the job is going sideways</li>
+      <li>A tear-off vehicle card to keep in your glovebox</li>
+    </ul>
+  </div>
+  <div><div class="rule gold"></div></div>
+</div>
+
+<section>
+  <p class="eyebrow">01 &middot; At the roadside</p>
+  <h2>Before you call anyone</h2>
+  <div class="hr"></div>
+  <p>Two minutes here changes the conversation. A mechanic who arrives to a clear
+    description quotes on the fault. One who arrives to &ldquo;it just stopped&rdquo; quotes on the risk.</p>
+  <ul class="check">
+    <li><b>Get off the carriageway first.</b> Hazards on, wheels turned away from traffic, triangle out if you have one. Nothing below matters more than this.</li>
+    <li><b>Note the warning lights</b> that are actually lit, and whether they came on before or after the trouble started. Photograph the cluster.</li>
+    <li><b>Check the obvious three:</b> fuel gauge, temperature gauge, and whether the battery light is on. A surprising share of call-outs end here.</li>
+    <li><b>Look under the vehicle</b> for anything dripping, and note the colour &mdash; clear, brown, red, green or black tells a mechanic different things.</li>
+    <li><b>Listen once more.</b> Try the ignition and pay attention: silence, a single click, rapid clicking and a slow crank are four different faults.</li>
+    <li><b>Note where you are</b> in a way someone else can find: a landmark and a direction of travel beats a road name.</li>
+  </ul>
+</section>
+
+<section>
+  <p class="eyebrow">02 &middot; Vocabulary</p>
+  <h2>How to describe the fault</h2>
+  <div class="hr"></div>
+  <p>You do not need the technical word. You need the <i>when</i>. Fill in these four and
+    you have told a mechanic more than most callers do.</p>
+  <table>
+    <tr><th style="width:26%">Say this</th><th>Because it separates</th></tr>
+    <tr><td><b>When it happens</b><br>cold start, after 20 minutes, only over bumps, only braking</td>
+        <td>A fault that appears only when hot is a different search from one that appears only when cold.</td></tr>
+    <tr><td><b>What it does</b><br>whines, knocks, grinds, shudders, hesitates, pulls left</td>
+        <td>Rotating noises, impact noises and vibration point at different systems.</td></tr>
+    <tr><td><b>What changes it</b><br>goes away above 40, worse in reverse, stops when I brake</td>
+        <td>Tells the mechanic which part is loaded when the noise appears.</td></tr>
+    <tr><td><b>What happened before</b><br>drove through water, hit a pothole, just had work done</td>
+        <td>Recent history is the single most useful thing you can offer, and the most often left out.</td></tr>
+  </table>
+  <div class="note" style="margin-top:4mm;"><b>Record it.</b> A ten-second voice note of the
+    noise, taken while it is happening, is worth more than any description. Send it with the job.</div>
+</section>
+
+<section class="pb">
+  <p class="eyebrow">03 &middot; Before work starts</p>
+  <h2>Eight questions to ask</h2>
+  <div class="hr"></div>
+  <ol class="steps">
+    <li><span class="q">What do you think it is, and how confident are you?</span> A straight answer distinguishes a diagnosis from a guess.</li>
+    <li><span class="q">Is there a diagnostic charge, and does it come off the repair?</span> Agree this before anyone opens anything.</li>
+    <li><span class="q">What is the total &mdash; parts and labour separately?</span> One lump number cannot be checked or compared.</li>
+    <li><span class="q">Are the parts new, aftermarket or used?</span> All three are legitimate. Not being told which is not.</li>
+    <li><span class="q">What happens if you open it and find more?</span> Ask them to stop and call you at an agreed figure rather than continue.</li>
+    <li><span class="q">How long, and can I collect the old parts?</span> Asking for the old parts back is normal and costs nothing.</li>
+    <li><span class="q">Is there a warranty on the work, and for how long?</span> Get it in writing, even a WhatsApp message.</li>
+    <li><span class="q">Can you put that in a message before you start?</span> A written quote is the whole of your protection.</li>
+  </ol>
+</section>
+
+<section>
+  <p class="eyebrow">04 &middot; Money</p>
+  <h2>Reading a quote</h2>
+  <div class="hr"></div>
+  <div class="two">
+    <div>
+      <p><b>A quote you can check contains:</b></p>
+      <ul class="check">
+        <li>Each part named, with its condition</li>
+        <li>Labour shown separately, with hours</li>
+        <li>Any diagnostic or call-out fee</li>
+        <li>What is <i>not</i> included</li>
+        <li>A date, and how long the price holds</li>
+      </ul>
+    </div>
+    <div>
+      <p><b>Parts &mdash; ask this for each:</b></p>
+      <table>
+        <tr><th>Type</th><th>Ask</th></tr>
+        <tr><td>New / OEM</td><td>Is it the maker's part or the maker's supplier's?</td></tr>
+        <tr><td>Aftermarket</td><td>Which brand, and what warranty comes with it?</td></tr>
+        <tr><td>Used</td><td>What is it off, and is it tested or sold as seen?</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">05 &middot; Warning signs</p>
+  <h2>Six signs the job is going sideways</h2>
+  <div class="hr"></div>
+  <ul class="check">
+    <li>The price moves and nobody called you before it moved.</li>
+    <li>You are told the whole assembly must go, with no explanation of which part failed.</li>
+    <li>Nothing is in writing, and requests to put it in writing are deflected.</li>
+    <li>The old parts cannot be produced and no reason is offered.</li>
+    <li>New faults appear immediately after a repair to an unrelated system.</li>
+    <li>You are pressed to decide now, on the spot, without a second opinion.</li>
+  </ul>
+  <div class="note warn" style="margin-top:4mm;"><b>One of these is a question. Three is a second opinion.</b>
+    You are entitled to stop, pay for the diagnostic you agreed to, and take the vehicle elsewhere.</div>
+</section>
+
+<section class="pb">
+  <p class="eyebrow">06 &middot; Keep this</p>
+  <h2>Your vehicle card</h2>
+  <div class="hr"></div>
+  <p>Fill this in once and photograph it. When something goes wrong, you can send
+    it in one message instead of hunting for a logbook at the roadside.</p>
+  <div class="jobcard">
+    <div class="row">
+      <div class="mono">MAKE &amp; MODEL<br><span class="fill"></span></div>
+      <div class="mono">YEAR<br><span class="fill"></span></div>
+    </div>
+    <div class="row">
+      <div class="mono">ENGINE / FUEL<br><span class="fill"></span></div>
+      <div class="mono">PLATE<br><span class="fill"></span></div>
+    </div>
+    <div class="row">
+      <div class="mono">VIN / CHASSIS<br><span class="fill"></span></div>
+    </div>
+    <div class="row">
+      <div class="mono">TYRE SIZE<br><span class="fill"></span></div>
+      <div class="mono">BATTERY SIZE<br><span class="fill"></span></div>
+    </div>
+    <div class="row">
+      <div class="mono">LAST SERVICE &mdash; DATE / MILEAGE<br><span class="fill"></span></div>
+    </div>
+    <div class="row">
+      <div class="mono">INSURER &amp; POLICY NO.<br><span class="fill"></span></div>
+    </div>
+    <div class="row">
+      <div class="mono">PARISH<br><span class="fill"></span></div>
+      <div class="mono">USUAL MECHANIC / GARAGE<br><span class="fill"></span></div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:5mm;">
+    <b>Mechanic Connect JA</b> connects you with verified garages and independent
+    mechanics across Jamaica for repairs, servicing, roadside assistance, and parts
+    &mdash; all in one app. WhatsApp <b>876 470 3144</b> &middot; mechanicconnectja@gmail.com
+  </div>
+  <div class="pagefoot"><span>The Roadside Job Card</span><span>Mechanic Connect JA &middot; OH-PEL Auto Ltd</span></div>
+</section>
+
+</body></html>
