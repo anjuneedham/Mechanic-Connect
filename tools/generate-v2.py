@@ -663,10 +663,10 @@ thanks = head(
   <div class="container container--narrow">
     <div class="prose">
 
-      <p class="eyebrow">Got it</p>
-      <h1>Thanks<span id="lead-name"></span> &mdash; we have your details.</h1>
-      <p class="lead">Someone from Mechanic Connect JA will follow up on WhatsApp.
-        In the meantime, here is the guide.</p>
+      <p class="eyebrow" id="t-eyebrow">Got it</p>
+      <h1 id="t-head">Thanks<span id="lead-name"></span> &mdash; we have your details.</h1>
+      <p class="lead" id="t-sub">Someone from Mechanic Connect JA will follow up on
+        WhatsApp. In the meantime, here is the guide.</p>
 
       <div class="lead-form" style="margin-bottom:var(--space-6)">
         <p class="eyebrow">Your free guide</p>
@@ -694,6 +694,25 @@ thanks = head(
 </section>
 
 <script>
+(function () {
+  /* The PHP handler on shared hosting sends a status back on the query string.
+     Anything other than "ok" means the submission was rejected, and thanking
+     someone for details we did not keep would be a lie. */
+  var status = new URLSearchParams(location.search).get("s");
+  if (!status || status === "ok") { return; }
+  document.getElementById("t-eyebrow").textContent = "Not sent";
+  document.getElementById("t-head").textContent =
+    status === "badphone"
+      ? "That phone number did not look right."
+      : "We did not get all of that.";
+  document.getElementById("t-sub").innerHTML =
+    "Nothing was saved. " +
+    '<a href="index.html#get-started">Go back and try again</a>' +
+    " \u2014 or WhatsApp us on " +
+    '<a href="https://wa.me/18764703144">876 470 3144</a>' +
+    " and we will take the details that way.";
+})();
+
 /* Personalise from what the visitor just typed. Nothing is stored beyond this
    browser session, and the page works untouched if it is not there. */
 (function () {
@@ -713,7 +732,7 @@ thanks = head(
   if (lead.parish) { parts.push("Parish: " + lead.parish); }
   if (lead.need) { parts.push("I need: " + lead.need); }
   document.getElementById("wa-link").href =
-    "https://wa.me/18764703144?text=" + encodeURIComponent(parts.join("\n"));
+    "https://wa.me/18764703144?text=" + encodeURIComponent(parts.join("\\n"));
 })();
 </script>
 """ % {"wa": WA} + FOOTER

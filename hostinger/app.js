@@ -152,8 +152,8 @@
 
   /* --- 4. Lead submission ------------------------------------------------ */
 
-  /* Netlify records the submission either way. With JavaScript off the browser
-     posts natively and Netlify redirects; the code below only removes the page
+  /* submit.php records the lead either way. With JavaScript off the browser
+     posts natively and PHP redirects; the code below only removes the page
      reload from the middle of that, and stashes the visitor's details so the
      thank-you page can greet them and pre-fill their WhatsApp message. If the
      fetch fails for any reason we fall back to a real browser submit rather
@@ -187,7 +187,7 @@
         button.textContent = "Sending\u2026";
       }
 
-      fetch(cfg.FORM_POST_PATH || "/", {
+      fetch(cfg.FORM_POST_PATH || "submit.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(data).toString()

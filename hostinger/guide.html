@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en-JM">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>The Roadside Job Card &mdash; free guide for Jamaican drivers</title>
+<meta name="description" content="A free six-page guide: what to check at the roadside, how to describe a fault, and the eight questions to ask before any mechanic starts work. From Mechanic Connect JA.">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mechanic Connect JA">
+<meta property="og:title" content="The Roadside Job Card &mdash; free guide for Jamaican drivers">
+<meta property="og:description" content="What to check, what to say, and what to ask before anyone touches your vehicle.">
+<meta property="og:image" content="assets/og-image-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+/* ── Tokens: light is the base, both dark states redefine only tokens ───── */
+:root{
+  --ground:#e9edf1; --surface:#ffffff; --surface-2:#f3f6f8;
+  --ink:#0f1a26; --ink-2:#41525f; --ink-3:#556370;
+  --line:#c8d3dc; --line-strong:#0f1a26;
+  --blue:#0166a8; --blue-ink:#014f83; --blue-wash:#e4eff7;
+  --gold:#7f5100; --gold-bright:#e39400; --gold-wash:#fbf1de;
+  --teal:#0d6a63; --teal-wash:#e3f1ef;
+  --on-accent:#ffffff;
+  --focus:#b4400a;
+  --shadow:0 1px 0 rgba(15,26,38,.04), 0 10px 30px -18px rgba(15,26,38,.45);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0b131c; --surface:#111c27; --surface-2:#16232f;
+    --ink:#e9f0f6; --ink-2:#a9bccb; --ink-3:#7f95a6;
+    --line:#27384a; --line-strong:#4a6478;
+    --blue:#4aa8e6; --blue-ink:#8ccbf5; --blue-wash:#12293c;
+    --gold:#e8ab3c; --gold-bright:#f0b64a; --gold-wash:#2c2312;
+    --teal:#4fbdb2; --teal-wash:#0f2b29;
+    --on-accent:#06121c;
+    --focus:#ff9a5e;
+    --shadow:0 1px 0 rgba(0,0,0,.3), 0 14px 34px -20px rgba(0,0,0,.85);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0b131c; --surface:#111c27; --surface-2:#16232f;
+  --ink:#e9f0f6; --ink-2:#a9bccb; --ink-3:#7f95a6;
+  --line:#27384a; --line-strong:#4a6478;
+  --blue:#4aa8e6; --blue-ink:#8ccbf5; --blue-wash:#12293c;
+  --gold:#e8ab3c; --gold-bright:#f0b64a; --gold-wash:#2c2312;
+  --teal:#4fbdb2; --teal-wash:#0f2b29;
+  --on-accent:#06121c;
+  --focus:#ff9a5e;
+  --shadow:0 1px 0 rgba(0,0,0,.3), 0 14px 34px -20px rgba(0,0,0,.85);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+img,svg{display:block;max-width:100%;height:auto}
+h1,h2,h3{
+  font-family:"Bricolage Grotesque","Public Sans",Helvetica,Arial,sans-serif;
+  font-weight:800; line-height:1.04; letter-spacing:-.028em;
+  margin:0; text-wrap:balance; color:var(--ink);
+}
+h1{font-size:clamp(2.4rem,1.5rem+4.2vw,4.15rem)}
+h2{font-size:clamp(1.7rem,1.25rem+1.9vw,2.6rem)}
+h3{font-size:1.15rem;letter-spacing:-.012em;font-weight:600}
+p{margin:0}
+a{color:var(--blue-ink)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.wrap{width:min(1140px,100% - 2.5rem);margin-inline:auto}
+.narrow{width:min(760px,100% - 2.5rem);margin-inline:auto}
+
+/* mono micro-label — the service-sheet voice */
+.lbl{
+  font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:.688rem; letter-spacing:.19em; text-transform:uppercase;
+  color:var(--ink-3); margin:0;
+}
+.lbl.b{color:var(--blue)}
+.lbl.g{color:var(--gold)}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+header{
+  position:sticky; top:0; z-index:40; background:var(--surface);
+  border-bottom:1px solid var(--line);
+}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:60px}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink);
+  font-weight:700;font-size:.98rem;letter-spacing:-.01em;min-width:0}
+.mark{width:30px;height:30px;flex:none;background:var(--blue);color:var(--on-accent);
+  display:grid;place-items:center;font-size:.7rem;font-weight:700;
+  font-family:"IBM Plex Mono",monospace}
+.brand span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar nav{display:none;gap:.25rem}
+.bar nav a{color:var(--ink-2);text-decoration:none;font-size:.9rem;font-weight:500;
+  padding:.55rem .7rem;min-height:44px;display:flex;align-items:center}
+.bar nav a:hover{color:var(--blue-ink)}
+@media(min-width:900px){.bar nav{display:flex}}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  min-height:48px;padding:.7rem 1.35rem;border:1.5px solid transparent;border-radius:3px;
+  font:inherit;font-weight:600;font-size:.97rem;line-height:1.15;text-decoration:none;
+  cursor:pointer;text-align:center;
+}
+.btn-pri{background:var(--blue);color:var(--on-accent);border-color:var(--blue)}
+.btn-pri:hover{background:var(--blue-ink);border-color:var(--blue-ink)}
+.btn-gold{background:var(--gold-bright);color:#1c1200;border-color:var(--gold-bright)}
+.btn-gold:hover{filter:brightness(1.07)}
+.btn-out{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn-out:hover{border-color:var(--blue);color:var(--blue-ink)}
+.btn-sm{min-height:42px;padding:.5rem 1rem;font-size:.9rem}
+.btn[disabled]{opacity:.55;cursor:not-allowed}
+
+/* ── Hero ───────────────────────────────────────────────────────────────── */
+.hero{padding:clamp(2.5rem,1rem+6vw,5.5rem) 0 clamp(2.5rem,1rem+5vw,4.5rem)}
+.hero-grid{display:grid;gap:clamp(2.5rem,1rem+5vw,4.5rem);align-items:center}
+@media(min-width:980px){.hero-grid{grid-template-columns:1.08fr .92fr}}
+.hero h1{margin:.9rem 0 1.15rem}
+.hero .sub{font-size:clamp(1.05rem,1rem+.35vw,1.24rem);color:var(--ink-2);max-width:34ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+.hero-fine{margin-top:1rem;font-size:.9rem;color:var(--ink-3)}
+
+/* the guide, drawn as the physical thing it is */
+.cover{
+  background:var(--surface);border:1.5px solid var(--line-strong);
+  box-shadow:var(--shadow); padding:0; max-width:410px; margin-inline:auto; width:100%;
+}
+.cover .top{height:7px;background:var(--blue)}
+.cover .bot{height:7px;background:var(--gold-bright)}
+.cover .body{padding:1.6rem 1.7rem 1.8rem}
+.cover .head{display:flex;justify-content:space-between;gap:1rem;
+  border-bottom:1px solid var(--line);padding-bottom:.6rem;margin-bottom:2.1rem}
+.cover h2{font-size:2.05rem;line-height:1.02;margin:.55rem 0 .9rem}
+.cover .cs{color:var(--ink-2);font-size:.96rem}
+.cover .inside{border:1.5px solid var(--line-strong);padding:1rem 1.1rem;margin-top:1.9rem}
+.cover .inside ul{margin:.6rem 0 0;padding-left:1.05rem;font-size:.9rem;color:var(--ink-2)}
+.cover .inside li{margin-bottom:.3rem}
+.cover .pgs{margin-top:1rem;display:flex;justify-content:space-between;align-items:center}
+
+/* ── Sections ───────────────────────────────────────────────────────────── */
+section{padding:clamp(3rem,1.5rem+5vw,5rem) 0}
+.band{background:var(--surface);border-block:1px solid var(--line)}
+.shead{max-width:56ch;margin-bottom:2.5rem}
+.shead h2{margin:.7rem 0 .8rem}
+.shead p{color:var(--ink-2)}
+
+.sheet{border-top:1.5px solid var(--line-strong)}
+.sheet .row{
+  display:grid;gap:.35rem 1.5rem;padding:1.15rem 0;border-bottom:1px solid var(--line);
+}
+@media(min-width:760px){.sheet .row{grid-template-columns:5.5rem 1fr}}
+.sheet .n{
+  font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--blue);
+  letter-spacing:.1em;padding-top:.22rem;
+}
+.sheet p{color:var(--ink-2);margin-top:.25rem;font-size:.98rem}
+
+.cards{display:grid;gap:1.25rem}
+@media(min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--surface);border:1.5px solid var(--line-strong);padding:1.5rem;
+  display:flex;flex-direction:column;gap:.55rem}
+.card .n{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--blue);letter-spacing:.1em}
+.card p{color:var(--ink-2);font-size:.97rem}
+
+.reasons{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+@media(min-width:680px){.reasons{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.reasons{grid-template-columns:repeat(3,1fr)}}
+.reason{background:var(--surface);padding:1.35rem 1.4rem}
+.reason h3{margin-bottom:.3rem}
+.reason p{color:var(--ink-2);font-size:.94rem}
+
+/* ── Gate ───────────────────────────────────────────────────────────────── */
+.gate{background:var(--surface);border:1.5px solid var(--line-strong);box-shadow:var(--shadow)}
+.gate .gtop{background:var(--blue);color:var(--on-accent);padding:1.1rem 1.6rem;
+  display:flex;flex-wrap:wrap;gap:.6rem;justify-content:space-between;align-items:baseline}
+.gate .gtop .lbl{color:var(--on-accent);opacity:.85}
+.gate .gtop strong{font-family:"Bricolage Grotesque",sans-serif;font-size:1.15rem;letter-spacing:-.01em}
+.gate .gbody{padding:1.7rem 1.6rem 1.9rem}
+.fields{display:grid;gap:1.05rem}
+@media(min-width:640px){.fields.two{grid-template-columns:1fr 1fr}}
+.field label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem}
+.field .hint{display:block;font-weight:400;color:var(--ink-3);font-size:.8rem;margin-top:.2rem}
+.field input,.field select,.field textarea{
+  width:100%;min-height:48px;padding:.7rem .8rem;font:inherit;font-size:1rem;
+  background:var(--surface-2);color:var(--ink);border:1.5px solid var(--line);border-radius:3px;
+}
+.field textarea{min-height:92px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);outline-offset:1px}
+.err{color:var(--focus);font-size:.85rem;margin-top:.35rem;display:none}
+.field.bad input,.field.bad select{border-color:var(--focus)}
+.field.bad .err{display:block}
+.gate .legal{font-size:.83rem;color:var(--ink-3);margin-top:1rem}
+
+.done{display:none}
+.done.on{display:block}
+.gate.sent .form-side{display:none}
+.deliver{display:grid;gap:.75rem;margin-top:1.25rem}
+@media(min-width:640px){.deliver{grid-template-columns:1fr 1fr}}
+.status{margin-top:.9rem;font-size:.9rem;color:var(--ink-2);min-height:1.3em}
+.status.warn{color:var(--focus)}
+
+details.read{margin-top:1.5rem;border-top:1px solid var(--line);padding-top:1.1rem}
+details.read summary{cursor:pointer;font-weight:600;font-size:.95rem;min-height:44px;
+  display:flex;align-items:center;gap:.5rem}
+details.read summary::marker{color:var(--blue)}
+.readbody{margin-top:1rem}
+.readbody h4{font-family:"Bricolage Grotesque",sans-serif;font-size:1.02rem;margin:1.4rem 0 .5rem;
+  letter-spacing:-.01em}
+.readbody h4:first-child{margin-top:0}
+.readbody ul,.readbody ol{margin:0;padding-left:1.15rem;color:var(--ink-2);font-size:.95rem}
+.readbody li{margin-bottom:.4rem}
+
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+footer{background:var(--surface);border-top:1.5px solid var(--line-strong);
+  padding:3rem 0 2rem;font-size:.94rem}
+.fgrid{display:grid;gap:2rem;margin-bottom:2.25rem}
+@media(min-width:760px){.fgrid{grid-template-columns:1.6fr 1fr 1fr}}
+.fgrid h3{font-size:.72rem;font-family:"IBM Plex Mono",monospace;font-weight:500;
+  letter-spacing:.19em;text-transform:uppercase;color:var(--ink-3);margin-bottom:.85rem}
+.fgrid ul{list-style:none;margin:0;padding:0}
+.fgrid li a{display:inline-flex;align-items:center;min-height:40px;color:var(--ink);
+  text-decoration:none}
+.fgrid li a:hover{color:var(--blue-ink);text-decoration:underline}
+.fgrid p{color:var(--ink-2)}
+.fbot{border-top:1px solid var(--line);padding-top:1.4rem;display:flex;flex-wrap:wrap;
+  gap:.6rem 1.5rem;justify-content:space-between;color:var(--ink-3);font-size:.86rem}
+
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="index.html"><span class="mark">MC</span><span>Mechanic Connect JA</span></a>
+    <nav aria-label="Sections">
+      <a href="index.html">Main site</a>
+      <a href="#inside">The guide</a>
+      <a href="#how">How it works</a>
+      <a href="#why">Why us</a>
+    </nav>
+    <a class="btn btn-pri btn-sm" href="#get">Get the guide</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="lbl g">Free guide &middot; 6 pages &middot; For Jamaican drivers</p>
+        <h1>Know what to ask before anyone opens your bonnet.</h1>
+        <p class="sub">A small problem stays a small bill when you can describe the
+          fault, read the quote, and spot the job going sideways. That is the whole guide.</p>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="#get">Send me the guide</a>
+          <a class="btn btn-out" href="#inside">See what&rsquo;s inside</a>
+        </div>
+        <p class="hero-fine">No cost. Written for drivers, not mechanics.</p>
+      </div>
+
+      <div class="cover" role="img" aria-label="Cover of The Roadside Job Card, a six-page guide for Jamaican drivers">
+        <div class="top"></div>
+        <div class="body">
+          <div class="head">
+            <p class="lbl">Mechanic Connect JA</p>
+            <p class="lbl">Kingston</p>
+          </div>
+          <p class="lbl b">Free guide</p>
+          <h2>The Roadside Job Card</h2>
+          <p class="cs">What to check, what to say, and what to ask before anyone
+            touches your vehicle.</p>
+          <div class="inside">
+            <p class="lbl">Inside</p>
+            <ul>
+              <li>The six-point roadside check</li>
+              <li>How to describe a fault</li>
+              <li>Eight questions before work starts</li>
+              <li>Reading a quote</li>
+              <li>Six signs the job is going sideways</li>
+            </ul>
+          </div>
+          <div class="pgs">
+            <p class="lbl">PDF &middot; A4</p>
+            <p class="lbl g">6 pages</p>
+          </div>
+        </div>
+        <div class="bot"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="inside" class="band">
+    <div class="wrap">
+      <div class="shead">
+        <p class="lbl b">What&rsquo;s inside</p>
+        <h2>Six sections, no filler.</h2>
+        <p>Every page is something you can use at the roadside or standing in a
+          workshop with your keys in your hand.</p>
+      </div>
+      <div class="sheet">
+        <div class="row"><p class="n">01</p><div><h3>Before you call anyone</h3>
+          <p>The six-point check that turns &ldquo;it just stopped&rdquo; into a description a mechanic can quote on &mdash; starting with getting off the carriageway.</p></div></div>
+        <div class="row"><p class="n">02</p><div><h3>How to describe the fault</h3>
+          <p>You don&rsquo;t need the technical word, you need the <em>when</em>. Four things to say, and why each one narrows the search.</p></div></div>
+        <div class="row"><p class="n">03</p><div><h3>Eight questions to ask</h3>
+          <p>Ask these before work starts, in this order. The last one &mdash; put it in a message before you begin &mdash; is the whole of your protection.</p></div></div>
+        <div class="row"><p class="n">04</p><div><h3>Reading a quote</h3>
+          <p>What a checkable quote contains, and the one question to ask for new, aftermarket and used parts.</p></div></div>
+        <div class="row"><p class="n">05</p><div><h3>Six signs the job is going sideways</h3>
+          <p>One is a question. Three is a second opinion. You are allowed to stop.</p></div></div>
+        <div class="row"><p class="n">06</p><div><h3>Your vehicle card</h3>
+          <p>Fill it in once, photograph it, and send it in one message instead of hunting for a logbook at the roadside.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="shead">
+        <p class="lbl b">The app</p>
+        <h2>How It Works</h2>
+        <p>Mechanic Connect JA connects you with verified garages and independent
+          mechanics across Jamaica for repairs, servicing, roadside assistance, and
+          parts &mdash; all in one app.</p>
+      </div>
+      <div class="cards">
+        <div class="card"><p class="n">01</p><h3>Download &amp; Request Service</h3>
+          <p>Tell the app what your vehicle is doing and where you are.</p></div>
+        <div class="card"><p class="n">02</p><h3>Get Quotes or Book Directly</h3>
+          <p>Compare what comes back, or go straight to a garage you already trust.</p></div>
+        <div class="card"><p class="n">03</p><h3>Job Gets Done, Pay Securely</h3>
+          <p>Payment runs through the app once the work is done.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" class="band">
+    <div class="wrap">
+      <div class="shead">
+        <p class="lbl b">Why Mechanic Connect</p>
+        <h2>Why Choose Mechanic Connect?</h2>
+      </div>
+      <div class="reasons">
+        <div class="reason"><h3>Verified Service Providers</h3><p>Garages and independent mechanics, checked before they take work.</p></div>
+        <div class="reason"><h3>No Customer Platform Fees</h3><p>Drivers are not charged a platform fee to use the app.</p></div>
+        <div class="reason"><h3>Clear, Upfront Pricing</h3><p>See what a job costs before you agree to it.</p></div>
+        <div class="reason"><h3>Secure In-App Payments</h3><p>Pay through the app when the work is finished.</p></div>
+        <div class="reason"><h3>Parts Made Easy</h3><p>Powered by OH-PEL Auto Limited.</p></div>
+        <div class="reason"><h3>Built for Jamaica, by Jamaicans</h3><p>Made for how vehicles actually get fixed here.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="get">
+    <div class="narrow">
+      <div class="gate" id="gate">
+        <div class="gtop">
+          <strong>The Roadside Job Card</strong>
+          <p class="lbl">Free &middot; PDF &middot; 6 pages</p>
+        </div>
+        <div class="gbody">
+
+          <p style="color:var(--ink-2);margin-bottom:1.4rem;max-width:52ch">
+            Tell us where you are and what you drive. The guide is yours straight
+            away, and we can point you at a verified mechanic in your parish when
+            you need one.</p>
+
+          <!-- Lead capture on shared hosting. The form posts to submit.php, which
+         validates it, appends it to _leads/leads.csv (blocked from the web by
+         its own .htaccess) and emails a notification. The CSV is the record;
+         mail from shared hosting is unreliable enough that it cannot be the
+         only copy.
+
+         The honeypot below is hidden from people and filled by bots, and the
+         "started" timestamp rejects anything submitted faster than a person
+         can type. Set NOTIFY_TO at the top of submit.php. -->
+          <form id="lead" name="guide-download" method="POST"
+                action="submit.php">
+
+            <input type="hidden" name="started" value="1788118328">
+      <input type="hidden" name="form-name" value="guide-download">
+            <p class="hp"><label>Leave this field empty<input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+            <div class="fields two">
+              <div class="field" id="f-name">
+                <label for="i-name">Your name</label>
+                <input id="i-name" name="name" type="text" autocomplete="name" required>
+                <p class="err">Please add your name.</p>
+              </div>
+              <div class="field" id="f-phone">
+                <label for="i-phone">Phone number
+                  <span class="hint">So a mechanic can reach you on WhatsApp.</span></label>
+                <input id="i-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
+                <p class="err">Please add a phone number we can reach you on.</p>
+              </div>
+            </div>
+
+            <div class="fields two" style="margin-top:1.05rem">
+              <div class="field" id="f-parish">
+                <label for="i-parish">Parish</label>
+                <select id="i-parish" name="parish" required>
+                  <option value="">Choose your parish</option>
+                  <option>Clarendon</option><option>Hanover</option><option>Kingston</option>
+                  <option>Manchester</option><option>Portland</option><option>St. Andrew</option>
+                  <option>St. Ann</option><option>St. Catherine</option><option>St. Elizabeth</option>
+                  <option>St. James</option><option>St. Mary</option><option>St. Thomas</option>
+                  <option>Trelawny</option><option>Westmoreland</option>
+                </select>
+                <p class="err">Please choose your parish.</p>
+              </div>
+              <div class="field" id="f-need">
+                <label for="i-need">What do you need?</label>
+                <select id="i-need" name="need" required>
+                  <option value="">Choose one</option>
+                  <option>Repairs</option><option>Servicing</option>
+                  <option>Roadside assistance</option><option>Parts</option>
+                  <option>Just the guide for now</option>
+                </select>
+                <p class="err">Please pick the closest one.</p>
+              </div>
+            </div>
+
+            <div class="field" style="margin-top:1.05rem">
+              <label for="i-vehicle">Your vehicle <span class="hint">Optional &mdash; make, model and year.</span></label>
+              <input id="i-vehicle" name="vehicle" type="text">
+            </div>
+
+            <!-- Campaign parameters, filled from the query string by the script
+                 at the foot of this page so a lead can be traced to the post or
+                 ad that produced it. -->
+            <input type="hidden" name="utm_source" value="">
+            <input type="hidden" name="utm_medium" value="">
+            <input type="hidden" name="utm_campaign" value="">
+            <input type="hidden" name="landing_page" value="">
+
+            <button class="btn btn-gold" type="submit" id="submit"
+                    style="margin-top:1.4rem;width:100%">Get the guide</button>
+            <p class="legal">We use your details to send the guide and to match you
+              with a mechanic. Nothing else.</p>
+          </form>
+
+          <details class="read">
+            <summary>Read section one free</summary>
+            <div class="readbody">
+              <h4>Before you call anyone</h4>
+              <ul>
+                <li><strong>Get off the carriageway first.</strong> Hazards on, wheels turned away from traffic. Nothing else matters more.</li>
+                <li><strong>Note the warning lights</strong> that are actually lit, and whether they came on before or after. Photograph the cluster.</li>
+                <li><strong>Check the obvious three:</strong> fuel gauge, temperature gauge, battery light.</li>
+                <li><strong>Look underneath</strong> for anything dripping, and note the colour.</li>
+                <li><strong>Listen once more.</strong> Silence, a single click, rapid clicking and a slow crank are four different faults.</li>
+                <li><strong>Note where you are</strong> as a landmark and a direction of travel.</li>
+              </ul>
+              <p style="margin-top:.9rem;color:var(--ink-3);font-size:.9rem">
+                The other five sections &mdash; describing the fault, the eight
+                questions, reading a quote, the warning signs and the vehicle card
+                &mdash; are in the PDF.</p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <h3>Mechanic Connect JA</h3>
+        <p style="max-width:38ch">Verified garages and independent mechanics across
+          Jamaica for repairs, servicing, roadside assistance, and parts.
+          Operated by OH-PEL Auto Ltd, Kingston.</p>
+      </div>
+      <div>
+        <h3>Talk to us</h3>
+        <ul>
+          <li><a href="https://wa.me/18764703144?text=Hi%20Mechanic%20Connect%20JA%2C%20I%20need%20a%20mechanic.">WhatsApp 876 470 3144</a></li>
+          <li><a href="mailto:mechanicconnectja@gmail.com">mechanicconnectja@gmail.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Get the app</h3>
+        <ul>
+          <li><a href="https://apps.apple.com/jm/app/mechanic-connect/id6754509101">Apple App Store</a></li>
+          <li><a href="https://play.google.com/store/apps/details?id=com.mechanic.mechanicconnect">Google Play &mdash; drivers</a></li>
+          <li><a href="https://play.google.com/store/apps/details?id=com.mechanic.mechanics">Google Play &mdash; garage staff</a></li>
+          <li><a href="https://www.instagram.com/mechanicconnectja/">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@mechanicconnectja">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>Copyright &copy; 2026 Mechanic Connect JA</span>
+      <span>The Roadside Job Card &middot; free guide</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function () {
+  "use strict";
+
+  /* Campaign parameters ride into the submission so a lead can be traced back
+     to the post or ad that produced it. Nothing else is collected. */
+  var params = new URLSearchParams(location.search);
+  ["utm_source", "utm_medium", "utm_campaign"].forEach(function (key) {
+    var field = document.querySelector('input[name="' + key + '"]');
+    if (field) { field.value = params.get(key) || ""; }
+  });
+  var landing = document.querySelector('input[name="landing_page"]');
+  if (landing) { landing.value = location.pathname + location.search; }
+
+  var form = document.getElementById("lead");
+  var button = document.getElementById("submit");
+
+  function flag(id, ok) {
+    document.getElementById(id).classList.toggle("bad", !ok);
+    return ok;
+  }
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    var name = document.getElementById("i-name").value.trim();
+    var phone = document.getElementById("i-phone").value.trim();
+    var parish = document.getElementById("i-parish").value;
+    var need = document.getElementById("i-need").value;
+
+    var ok = true;
+    ok = flag("f-name", name.length > 1) && ok;
+    ok = flag("f-phone", phone.replace(/\D/g, "").length >= 7) && ok;
+    ok = flag("f-parish", parish !== "") && ok;
+    ok = flag("f-need", need !== "") && ok;
+    if (!ok) {
+      form.querySelector(".bad input, .bad select").focus();
+      return;
+    }
+
+    /* Carried to the thank-you page so it can greet them and pre-fill the
+       WhatsApp message. Session-scoped; nothing persists past the visit. */
+    try {
+      window.sessionStorage.setItem("mc_lead", JSON.stringify({
+        name: name, phone: phone, parish: parish, need: need
+      }));
+    } catch (e) { /* storage off — the thank-you page stays generic */ }
+
+    button.disabled = true;
+    button.textContent = "Sending\u2026";
+
+    fetch("submit.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function (response) {
+      if (!response.ok) { throw new Error(String(response.status)); }
+      window.location.href = form.getAttribute("action");
+    }).catch(function () {
+      /* Never lose the lead — hand it back to the browser to post natively. */
+      form.submit();
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

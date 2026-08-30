@@ -1,2 +1,4 @@
-# Build artefact — regenerate with:  cd site && zip -qr ../mechanic-connect-site.zip .
+# Build artefacts — rebuild with the scripts in tools/
 mechanic-connect-site.zip
+mechanic-connect-hostinger.zip
+hostinger/_leads/leads.csv

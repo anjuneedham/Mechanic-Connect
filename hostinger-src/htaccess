@@ -1,0 +1,81 @@
+# Mechanic Connect JA — Apache/LiteSpeed configuration for Hostinger.
+# Uploaded as ".htaccess" in public_html. The build script renames it.
+
+Options -Indexes
+DirectoryIndex index.html index.php
+AddDefaultCharset UTF-8
+
+# ── Lead data is not web content ───────────────────────────────────────────
+# The CSV written by submit.php must never be downloadable. The directory also
+# carries its own .htaccess; this is the second lock on the same door.
+RedirectMatch 404 ^/_leads(/.*)?$
+
+<FilesMatch "\.(csv|log|bak|sql|ini)$">
+  Require all denied
+</FilesMatch>
+
+# ── Security headers ───────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # ── HTTPS, once a certificate is issued ─────────────────────────────────
+  # Hostinger issues a free certificate in hPanel. Leave these two lines
+  # commented until it is active, or the site will redirect into an error.
+  # RewriteCond %{HTTPS} !=on
+  # RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # ── Clean URLs ──────────────────────────────────────────────────────────
+  # /guide serves guide.html. Nothing is redirected, so the .html links inside
+  # the pages keep working exactly as they are.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^([^.]+)$ $1.html [L]
+
+  # ── The old WordPress permalinks ────────────────────────────────────────
+  # Anything already printed, shared in a WhatsApp group, or sitting in
+  # Google's index keeps working instead of hitting a 404. Pages not rebuilt
+  # yet go to the home page; give each its own destination as it goes live.
+  RewriteRule ^home/?$                    /                 [R=301,L]
+  RewriteRule ^for-customers/?$           /#get-the-app     [R=301,L]
+  RewriteRule ^for-mechanics/?$           /#get-the-app     [R=301,L]
+  RewriteRule ^about-us/?$                /                 [R=301,L]
+  RewriteRule ^privacy-policy-2/?$        /                 [R=301,L]
+  RewriteRule ^mechanic-connect-frequently-asked-questions-faqs/?$ / [R=301,L]
+  RewriteRule ^terms-of-service-end-user-agreement-for-mechanic-connect/?$ / [R=301,L]
+
+  # Leftovers from the WordPress install, so they stop 404-ing in the logs.
+  RewriteRule ^wp-(admin|login|content|includes|json)(/.*)?$ / [R=301,L]
+  RewriteRule ^feed/?$                    /                 [R=301,L]
+
+  # ── Short, speakable paths ──────────────────────────────────────────────
+  RewriteRule ^free-guide/?$              /guide            [R=301,L]
+  RewriteRule ^download/?$                /#get-the-app     [R=301,L]
+</IfModule>
+
+# ── Caching ────────────────────────────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg              "access plus 1 year"
+  ExpiresByType image/png               "access plus 1 year"
+  ExpiresByType image/svg+xml           "access plus 1 year"
+  ExpiresByType image/x-icon            "access plus 1 year"
+  ExpiresByType application/pdf         "access plus 1 month"
+  ExpiresByType text/css                "access plus 1 hour"
+  ExpiresByType application/javascript  "access plus 1 hour"
+  ExpiresByType text/html               "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml \
+    application/javascript application/json image/svg+xml
+</IfModule>
+
+ErrorDocument 404 /index.html

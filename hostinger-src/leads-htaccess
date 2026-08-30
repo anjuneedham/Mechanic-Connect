@@ -1,0 +1,3 @@
+# Nothing in this directory is web content. It holds captured leads.
+Require all denied
+Deny from all

@@ -10,8 +10,8 @@
         session, writes them into the form's hidden fields, and appends them to
         outbound store links   (spec §6 item 7)
      3. puts the badge matching the visitor's platform first (spec §6 item 3)
-     4. submits the lead form without a page reload (Netlify Forms records it
-        either way — see initForm)
+     4. submits the lead form without a page reload (the form handler records
+        it either way — see initForm)
 
    No third-party analytics, no trackers, no cookies — spec §8.
    ========================================================================== */
