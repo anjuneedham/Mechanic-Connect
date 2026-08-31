@@ -24,7 +24,13 @@ This deployment replaces a live WordPress site. The backup is the only way back,
 and the only remaining copy of anything not carried across.
 
 - [ ] hPanel → Files → Backups → manual backup. **Wait until it reports complete.**
-- [ ] Databases → phpMyAdmin → Export. A file backup alone will not restore WordPress.
+- [ ] **Export the database too.** The file backup saves the site's code and its
+      uploaded images. It does *not* save a word of page text — WordPress keeps all
+      of that in a MySQL database, separately. Skip this and the client's About
+      page, FAQs, old policies and blog post are gone for good.
+      hPanel → Databases → phpMyAdmin → pick the database → Export → Go. You get one
+      `.sql` file; keep it beside the file backup. Unsure which database? Open
+      `public_html/wp-config.php` and read `DB_NAME`.
 - [ ] Confirm the client accepts losing the WordPress admin. Content changes
       become a developer job from here. That is the trade for a site that is fast
       and cannot be broken from a login — but they should agree now, not find out
