@@ -46,8 +46,8 @@ require __DIR__ . '/includes/header.php';
         <p><strong>On safety</strong>If an issue could affect how safely the vehicle drives, we won't tell you it's fine based on a chat. The vehicle should be properly inspected before deciding whether it's safe to keep driving. If you're stranded now, start with roadside assistance.</p>
       </div>
       <div class="btns">
-        <a class="btn btn--blue" href="/inspection">Book an inspection</a>
-        <a class="btn btn--red" href="/roadside">I'm stranded now</a>
+        <a class="btn btn--blue" href="<?= BASE ?>/inspection">Book an inspection</a>
+        <a class="btn btn--red" href="<?= BASE ?>/roadside">I'm stranded now</a>
       </div>
     </div>
   </section>

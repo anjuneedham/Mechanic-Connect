@@ -69,7 +69,7 @@ require __DIR__ . '/includes/header.php';
     <div class="wrap">
       <div class="plate-h"><h2>Apply to join</h2></div>
       <p class="lede" style="margin-top:13px">Fill this in and the team will contact you to guide you through onboarding and verification.</p>
-      <form class="form" name="provider-signup" method="POST" action="/submit.php">
+      <form class="form" name="provider-signup" method="POST" action="<?= BASE ?>/submit.php">
         <div class="fld"><label for="f-type">I'm applying as <span class="req">*</span></label>
           <select id="f-type" name="applicant_type" required>
             <option value="">Select one</option>

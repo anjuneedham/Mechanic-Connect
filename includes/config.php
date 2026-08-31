@@ -23,6 +23,16 @@ define('IOS_APP', '');   // leave empty until confirmed
 
 define('SITE_URL', 'https://mechanic-connectja.mechanic-connect.net');
 
+// Directory the site is served from: '' at the domain root, '/staging' when
+// deployed into a subfolder. Detected rather than configured, so the same
+// commit runs correctly at the root and in a staging folder with no edit.
+// This is what makes staging possible without a subdomain.
+$mc_dir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/index.php'));
+define('BASE', ($mc_dir === '/' || $mc_dir === '.' || $mc_dir === '') ? '' : rtrim($mc_dir, '/'));
+
+// True when the site is running from a subfolder, i.e. a staging copy.
+define('IS_STAGING', BASE !== '');
+
 // Where the CSV lead backup is written. Must sit ABOVE public_html.
 // DOCUMENT_ROOT is empty under CLI and on some handlers, and dirname('') is
 // '.', which would drop a file of customers' names and phone numbers inside

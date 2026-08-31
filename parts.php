@@ -40,7 +40,7 @@ require __DIR__ . '/includes/header.php';
   <section class="sec mist" id="partsform">
     <div class="wrap">
       <div class="plate-h"><h2>Send a parts request</h2></div>
-      <form class="form" name="parts-request" method="POST" action="/submit.php">
+      <form class="form" name="parts-request" method="POST" action="<?= BASE ?>/submit.php">
         <div class="fld"><label for="pt-name">Your name <span class="req">*</span></label><input id="pt-name" name="name" required></div>
         <div class="fld"><label for="pt-phone">WhatsApp or phone <span class="req">*</span></label><input id="pt-phone" name="phone" type="tel" required></div>
         <div class="fld"><label for="pt-veh">Vehicle year, make and model <span class="req">*</span></label><input id="pt-veh" name="vehicle" placeholder="e.g. 2012 Toyota Axio" required></div>

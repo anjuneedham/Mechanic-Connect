@@ -12,7 +12,7 @@ require __DIR__ . '/includes/header.php';
       <h1>Stranded? We'll get you moving.</h1>
       <p class="lede">The smartest way to get your auto services. Roadside help, vehicle inspections and parts — from verified mechanics and garages across the Kingston Metropolitan Area.</p>
       <div class="btns">
-        <a class="btn btn--red" href="/roadside">Get roadside help</a>
+        <a class="btn btn--red" href="<?= BASE ?>/roadside">Get roadside help</a>
         <a class="btn btn--white" href="<?= wa() ?>">Message us on WhatsApp</a>
       </div>
       <p style="margin-top:15px;font-size:15px;color:rgba(255,255,255,.75)">No account needed to ask a question. Customers pay no platform or booking fees.</p>
@@ -23,27 +23,27 @@ require __DIR__ . '/includes/header.php';
     <div class="wrap">
       <div class="plate-h"><h2>What do you need?</h2></div>
       <div class="paths">
-        <a class="pth pth--hot" href="/roadside">
+        <a class="pth pth--hot" href="<?= BASE ?>/roadside">
           <h3>Get roadside help</h3>
           <p>Dead battery, flat tyre, breakdown, or the car just won't start.</p>
           <span class="act">Start here</span>
         </a>
-        <a class="pth" href="/inspection">
+        <a class="pth" href="<?= BASE ?>/inspection">
           <h3>Book an inspection</h3>
           <p>15-point vehicle inspection with OH-PEL Auto. J$1,500 booked in the app.</p>
           <span class="act">See the offer</span>
         </a>
-        <a class="pth" href="/parts">
+        <a class="pth" href="<?= BASE ?>/parts">
           <h3>Request a part</h3>
           <p>Send your vehicle details and the part you need. We help find it.</p>
           <span class="act">Send a request</span>
         </a>
-        <a class="pth" href="/services">
+        <a class="pth" href="<?= BASE ?>/services">
           <h3>Find automotive services</h3>
           <p>Servicing, diagnostics, brakes, suspension, tyres and major repairs.</p>
           <span class="act">Browse services</span>
         </a>
-        <a class="pth" href="/join">
+        <a class="pth" href="<?= BASE ?>/join">
           <h3>Join as a mechanic or garage</h3>
           <p>Take jobs, quote, get paid. Apprenticeship enquiries welcome too.</p>
           <span class="act">Apply to join</span>
@@ -88,7 +88,7 @@ require __DIR__ . '/includes/header.php';
       <p class="lede" style="margin-top:14px">Launching in the Kingston Metropolitan Area, with other parishes to follow.</p>
       <ul class="area"><li>Kingston</li><li>St. Andrew</li><li>Portmore</li><li>Spanish Town</li></ul>
       <div class="btns">
-        <a class="btn btn--red" href="/roadside">Get roadside help</a>
+        <a class="btn btn--red" href="<?= BASE ?>/roadside">Get roadside help</a>
         <a class="btn btn--white" href="<?= wa() ?>">Ask a question</a>
       </div>
     </div>

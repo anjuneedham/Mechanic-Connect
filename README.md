@@ -11,8 +11,20 @@ Built by YardScale Digital.
 3. `public_html` must be empty before the first deploy. Clear it *after* the backup confirms.
 4. Deploy, then enable auto-deployment and add the webhook URL to the repo so pushes go live.
 
-**Review on a staging subdomain before touching the live domain.** Point a subdomain at a
-separate folder, deploy there, and send that link to the client for sign-off.
+**Review a staging copy before touching the live domain.** Two ways, depending on what the
+hosting plan allows:
+
+- **Subfolder (works on every plan, no subdomain needed).** Deploy this repo into
+  `public_html/staging`, then open `https://your-domain/staging/`. The site detects the
+  folder it is served from and rewrites every internal link, form action and asset path to
+  match, so nothing needs editing. A copy running from a subfolder also serves
+  `<meta name="robots" content="noindex, nofollow">` in place of its canonical tag, so the
+  staging copy can never be indexed alongside the real site. Delete the folder after
+  sign-off.
+- **Subdomain,** if the plan has them: hPanel → Domains → Subdomains, point it at its own
+  folder and deploy there.
+
+Either way, do not point the live domain at this until the client has signed off.
 
 ## Changing content
 
@@ -105,6 +117,22 @@ Every page renders with no PHP notice or warning; the 404 handler fires; both
 forms record and redirect correctly; the honeypot and the missing-field guard
 each reject without writing a row; the spreadsheet formula-injection guard
 prefixes `=cmd|calc` correctly; and the CSV is written above the web root.
+
+### Deploying to a subfolder
+
+`includes/config.php` defines `BASE` by reading the directory the running script sits in:
+empty at the domain root, `/staging` inside `public_html/staging`. Every internal link goes
+through it. There is nothing to configure and nothing to change between the two — the same
+commit runs correctly in both places.
+
+`.htaccess` deliberately carries no `RewriteBase`, so mod_rewrite takes its base from the
+directory the file is in. Adding `RewriteBase /` back would break the subfolder copy. The
+HTTPS redirect uses `%{REQUEST_URI}` for the same reason: the older form threw subfolder
+requests at the domain root.
+
+The one thing that does not follow the site into a subfolder is `ErrorDocument 404`, which
+is an absolute path. A staging copy falls back to the server's own 404 page. That is
+harmless and not worth complicating the file for.
 
 ### Still to confirm
 

@@ -19,7 +19,14 @@ $nav = [
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= e($TITLE) ?></title>
 <meta name="description" content="<?= e($DESC) ?>">
+<?php if (IS_STAGING): ?>
+<!-- Running from a subfolder, so this is a staging copy. Keep it out of
+     search results entirely — a second indexed copy of the site would
+     compete with the real one. -->
+<meta name="robots" content="noindex, nofollow">
+<?php else: ?>
 <link rel="canonical" href="<?= SITE_URL ?><?= e($_SERVER['REQUEST_URI'] ?? '/') ?>">
+<?php endif; ?>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mechanic Connect JA">
 <meta property="og:title" content="<?= e($TITLE) ?>">
@@ -30,7 +37,7 @@ $nav = [
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="<?= BASE ?>/assets/css/style.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"AutoRepair","name":"Mechanic Connect JA",
 "description":"Platform connecting Jamaican vehicle owners with verified garages and independent mechanics.",
@@ -45,7 +52,7 @@ $nav = [
 
 <header class="hdr">
   <div class="hdr__in">
-    <a class="logo" href="/">
+    <a class="logo" href="<?= BASE ?>/">
       <span>
         <span class="logo__plate">Mechanic Connect</span>
         <span class="logo__sub">Jamaica</span>
@@ -55,7 +62,7 @@ $nav = [
   </div>
   <nav class="nav" id="nav" aria-label="Main">
     <?php foreach ($nav as $k => $v): ?>
-      <a href="<?= $v[1] ?>"<?= $PAGE === $k ? ' aria-current="page"' : '' ?>><?= $v[0] ?></a>
+      <a href="<?= BASE . $v[1] ?>"<?= $PAGE === $k ? ' aria-current="page"' : '' ?>><?= $v[0] ?></a>
     <?php endforeach; ?>
   </nav>
 </header>

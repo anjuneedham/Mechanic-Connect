@@ -6,10 +6,10 @@
 // ─────────────────────────────────────────────────────────────
 require_once __DIR__ . '/includes/config.php';
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') { header('Location: /'); exit; }
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') { header('Location: ' . BASE . '/'); exit; }
 
 // Honeypot — bots fill hidden fields, people don't.
-if (!empty($_POST['company_website'])) { header('Location: /thank-you'); exit; }
+if (!empty($_POST['company_website'])) { header('Location: ' . BASE . '/thank-you'); exit; }
 
 $type = ($_POST['form_type'] ?? '') === 'provider' ? 'provider' : 'parts';
 
@@ -28,7 +28,7 @@ $required = $type === 'provider'
   ? ['applicant_type','name','phone','parish']
   : ['name','phone','vehicle','part'];
 foreach ($required as $r) {
-    if ($data[$r] === '') { header('Location: /?error=missing'); exit; }
+    if ($data[$r] === '') { header('Location: ' . BASE . '/?error=missing'); exit; }
 }
 
 $source = preg_replace('/[^a-zA-Z0-9_\-]/', '', (string)($_POST['source'] ?? 'direct')) ?: 'direct';
@@ -75,5 +75,5 @@ $lines[] = 'Sent from ' . SITE_URL;
     "Content-Type: text/plain; charset=UTF-8"
 );
 
-header('Location: /thank-you?t=' . $type);
+header('Location: ' . BASE . '/thank-you?t=' . $type);
 exit;

@@ -20,12 +20,12 @@
       <div>
         <h3>Quick links</h3>
         <ul>
-          <li><a href="/roadside">Roadside assistance</a></li>
-          <li><a href="/inspection">15-point inspection</a></li>
-          <li><a href="/parts">Request a part</a></li>
-          <li><a href="/join">Join as a provider</a></li>
+          <li><a href="<?= BASE ?>/roadside">Roadside assistance</a></li>
+          <li><a href="<?= BASE ?>/inspection">15-point inspection</a></li>
+          <li><a href="<?= BASE ?>/parts">Request a part</a></li>
+          <li><a href="<?= BASE ?>/join">Join as a provider</a></li>
           <li><a href="https://www.instagram.com/mechanicconnectja/">Instagram</a> &middot; <a href="https://www.tiktok.com/@mechanicconnectja">TikTok</a></li>
-          <li><a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a></li>
+          <li><a href="<?= BASE ?>/privacy">Privacy</a> &middot; <a href="<?= BASE ?>/terms">Terms</a></li>
         </ul>
       </div>
     </div>
@@ -37,6 +37,6 @@
   </div>
 </footer>
 
-<script src="/assets/js/app.js" defer></script>
+<script src="<?= BASE ?>/assets/js/app.js" defer></script>
 </body>
 </html>

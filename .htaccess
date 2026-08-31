@@ -1,10 +1,18 @@
 # ── Clean URLs ────────────────────────────────────────────
 RewriteEngine On
-RewriteBase /
 
-# Force HTTPS
+# No RewriteBase on purpose. Without it mod_rewrite takes the base from the
+# directory this file sits in, so the same rules work at the domain root and
+# in a staging subfolder. Hard-coding "/" breaks the subfolder copy.
+
+# Force HTTPS. Uses REQUEST_URI rather than the captured path so a request to
+# a subfolder keeps its folder instead of being thrown at the domain root.
+#
+# NOTE: this redirects before the certificate exists. If you deploy to a folder
+# or domain whose SSL is not yet issued, comment these three lines out, install
+# the certificate in hPanel, then put them back.
 RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # Strip .php from URLs
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
@@ -25,6 +33,8 @@ Redirect 301 /privacy-policy-2/ /privacy
 Redirect 301 /terms-of-service-end-user-agreement-for-mechanic-connect/ /terms
 Redirect 301 /hello-world/ /
 
+# Absolute by design: at the domain root this is correct. A staging copy in a
+# subfolder falls back to the server's own 404 page, which is harmless.
 ErrorDocument 404 /404.php
 
 # ── Security ──────────────────────────────────────────────
