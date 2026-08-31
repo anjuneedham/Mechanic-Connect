@@ -8,6 +8,7 @@ $nav = [
   'inspection' => ['Inspection', '/inspection'],
   'parts'      => ['Parts',      '/parts'],
   'services'   => ['Services',   '/services'],
+  'guide'      => ['Free Guide', '/guide'],
   'mechanics'  => ['Join Us',    '/join'],
   'about'      => ['About',      '/about'],
   'faqs'       => ['FAQs',       '/faqs'],

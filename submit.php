@@ -11,11 +11,21 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') { header('Location: ' . BASE . '/'); 
 // Honeypot — bots fill hidden fields, people don't.
 if (!empty($_POST['company_website'])) { header('Location: ' . BASE . '/thank-you'); exit; }
 
-$type = ($_POST['form_type'] ?? '') === 'provider' ? 'provider' : 'parts';
+$submitted = (string)($_POST['form_type'] ?? '');
+$type = in_array($submitted, ['provider', 'guide'], true) ? $submitted : 'parts';
 
-$fields = $type === 'provider'
-  ? ['applicant_type','name','business','phone','email','parish','years','specialisation','roadside','notes']
-  : ['name','phone','vehicle','vin','part','location'];
+switch ($type) {
+    case 'provider':
+        $fields = ['applicant_type','name','business','phone','email','parish','years','specialisation','roadside','notes'];
+        break;
+    case 'guide':
+        // Free guide download. Deliberately short — a lead magnet that asks for
+        // eight fields does not get filled in.
+        $fields = ['name','phone','parish','vehicle'];
+        break;
+    default:
+        $fields = ['name','phone','vehicle','vin','part','location'];
+}
 
 $data = [];
 foreach ($fields as $f) {
@@ -24,11 +34,17 @@ foreach ($fields as $f) {
 }
 
 // Required fields
-$required = $type === 'provider'
-  ? ['applicant_type','name','phone','parish']
-  : ['name','phone','vehicle','part'];
+switch ($type) {
+    case 'provider': $required = ['applicant_type','name','phone','parish']; break;
+    case 'guide':    $required = ['name','phone']; break;
+    default:         $required = ['name','phone','vehicle','part'];
+}
+
+// Send an incomplete submission back to the form it came from. Dropping someone
+// on the home page with no explanation loses the lead outright.
+$formPage = ['parts' => '/parts', 'provider' => '/join', 'guide' => '/guide'][$type];
 foreach ($required as $r) {
-    if ($data[$r] === '') { header('Location: ' . BASE . '/?error=missing'); exit; }
+    if ($data[$r] === '') { header('Location: ' . BASE . $formPage . '?error=missing'); exit; }
 }
 
 $source = preg_replace('/[^a-zA-Z0-9_\-]/', '', (string)($_POST['source'] ?? 'direct')) ?: 'direct';
@@ -55,9 +71,11 @@ if ($fh = @fopen(LEAD_LOG, 'a')) {
 // The body and the CSV keep their newlines; only the header is flattened.
 $safeName = str_replace(["\r", "\n"], ' ', $data['name']);
 
-$subject = $type === 'provider'
-  ? 'New provider application — ' . $safeName
-  : 'New parts request — ' . $safeName;
+switch ($type) {
+    case 'provider': $subject = 'New provider application — ' . $safeName; break;
+    case 'guide':    $subject = 'Guide download — ' . $safeName; break;
+    default:         $subject = 'New parts request — ' . $safeName;
+}
 
 $lines = ["Received: $stamp", "Source: $source", ''];
 foreach ($data as $k => $v) {

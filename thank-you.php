@@ -3,20 +3,31 @@ $PAGE  = '';
 $TITLE = 'Thank you — Mechanic Connect JA';
 $DESC  = 'We have your details.';
 require __DIR__ . '/includes/header.php';
-$t = ($_GET['t'] ?? '') === 'provider' ? 'provider' : 'parts';
+$t = in_array($_GET['t'] ?? '', ['provider', 'guide'], true) ? $_GET['t'] : 'parts';
 ?>
 
 <section class="hero gears">
   <div class="wrap">
-    <p class="kicker">Received</p>
-    <h1>We have your details.</h1>
-    <p class="lede"><?= $t === 'provider'
-      ? 'Thanks for applying. The team will review your information and contact you about onboarding and verification.'
-      : 'Thanks. We will come back to you to confirm the part and the price. This does not place an order.' ?></p>
+    <p class="kicker"><?= $t === 'guide' ? 'Your guide is ready' : 'Received' ?></p>
+    <h1><?= $t === 'guide' ? 'Here is your guide.' : 'We have your details.' ?></h1>
+    <p class="lede"><?php
+      if ($t === 'provider') {
+          echo 'Thanks for applying. The team will review your information and contact you about onboarding and verification.';
+      } elseif ($t === 'guide') {
+          echo 'The Roadside Job Card — six pages on what to check, what to say and what to ask before anyone touches your vehicle. Download it below and keep it on your phone.';
+      } else {
+          echo 'Thanks. We will come back to you to confirm the part and the price. This does not place an order.';
+      }
+    ?></p>
     <div class="btns">
-      <a class="btn btn--white" href="<?= wa($t === 'provider'
+      <?php if ($t === 'guide'): ?>
+        <a class="btn btn--white" href="<?= BASE ?>/assets/The-Roadside-Job-Card.pdf" download>Download the guide (PDF)</a>
+      <?php endif; ?>
+      <a class="btn btn--line" href="<?= wa($t === 'provider'
         ? 'Hi, I just sent an application to join Mechanic Connect.'
-        : 'Hi, I just sent a parts request through the website.') ?>">Continue on WhatsApp</a>
+        : ($t === 'guide'
+          ? 'Hi, I just downloaded The Roadside Job Card.'
+          : 'Hi, I just sent a parts request through the website.')) ?>">Continue on WhatsApp</a>
       <a class="btn btn--line" href="<?= BASE ?>/">Back to home</a>
     </div>
   </div>

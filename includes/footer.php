@@ -23,6 +23,7 @@
           <li><a href="<?= BASE ?>/roadside">Roadside assistance</a></li>
           <li><a href="<?= BASE ?>/inspection">15-point inspection</a></li>
           <li><a href="<?= BASE ?>/parts">Request a part</a></li>
+          <li><a href="<?= BASE ?>/guide">Free guide for drivers</a></li>
           <li><a href="<?= BASE ?>/join">Join as a provider</a></li>
           <li><a href="https://www.instagram.com/mechanicconnectja/">Instagram</a> &middot; <a href="https://www.tiktok.com/@mechanicconnectja">TikTok</a></li>
           <li><a href="<?= BASE ?>/privacy">Privacy</a> &middot; <a href="<?= BASE ?>/terms">Terms</a></li>

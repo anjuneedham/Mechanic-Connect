@@ -47,6 +47,28 @@ hPanel File Manager, one level above `public_html`.
 If Gmail filters the notifications, set up an SMTP sender in hPanel and switch
 `submit.php` from `mail()` to authenticated SMTP. The CSV keeps working regardless.
 
+## The free guide
+
+`/guide` offers *The Roadside Job Card*, a six-page PDF for drivers, in exchange for a
+name and phone number. It is the only page on the site that captures a lead from someone
+who is not yet ready to book anything.
+
+- The PDF is served from `assets/The-Roadside-Job-Card.pdf`.
+- The form posts to `submit.php` as `form_type=guide` and is logged like any other lead,
+  with the same honeypot and the same CSV.
+- `thank-you.php?t=guide` hands over the download. Nothing is emailed to the visitor, so
+  there is no deliverability problem to manage.
+
+The PDF's source document and the script that renders it live on
+`claude/file-as-guide-tj7jsd` under `landing/assets/guide-source.html`. Regenerate with:
+
+```sh
+chromium --headless=new --no-pdf-header-footer   --print-to-pdf=assets/The-Roadside-Job-Card.pdf guide-source.html
+```
+
+Nothing in the guide states a price, a guarantee or a statistic. Keep it that way — it is
+advice a driver can act on, which is why it is worth a phone number.
+
 ## Campaign links
 
 Append `?src=` to any campaign URL and the value is stored and submitted with the form:
