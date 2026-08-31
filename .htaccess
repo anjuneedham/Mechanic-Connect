@@ -1,0 +1,52 @@
+# ── Clean URLs ────────────────────────────────────────────
+RewriteEngine On
+RewriteBase /
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# Strip .php from URLs
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L,NE]
+
+# Map extensionless URLs to .php files
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.+?)/?$ $1.php [L]
+
+# ── Redirects from the old WordPress URLs ─────────────────
+Redirect 301 /home/ /
+Redirect 301 /for-customers/ /services
+Redirect 301 /for-mechanics/ /join
+Redirect 301 /about-us/ /about
+Redirect 301 /mechanic-connect-frequently-asked-questions-faqs/ /faqs
+Redirect 301 /privacy-policy-2/ /privacy
+Redirect 301 /terms-of-service-end-user-agreement-for-mechanic-connect/ /terms
+Redirect 301 /hello-world/ /
+
+ErrorDocument 404 /404.php
+
+# ── Security ──────────────────────────────────────────────
+Options -Indexes
+<FilesMatch "\.(csv|log|md)$">
+  Require all denied
+</FilesMatch>
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ── Caching ───────────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml
+</IfModule>

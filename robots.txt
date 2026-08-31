@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mechanic-connectja.mechanic-connect.net/sitemap.xml
