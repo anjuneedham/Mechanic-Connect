@@ -15,11 +15,28 @@ define('SUPPORT_PHONE', '876-343-4189');
 define('SUPPORT_HOURS', 'Mon–Fri, 9:30am–6:00pm');
 define('SITE_ADDRESS', '26 Eastwood Park Road, Kingston 10, Jamaica');
 
-// App links. Add IOS_APP only when a live App Store URL is confirmed.
+// ── App links ────────────────────────────────────────────────────────────
+// Google Play.
 define('APP_CUSTOMER', 'https://play.google.com/store/apps/details?id=com.mechanic.mechanicconnect');
 define('APP_MECHANIC', 'https://play.google.com/store/apps/details?id=com.mechanic.mechanics');
 define('APP_GARAGE',   'https://play.google.com/store/apps/details?id=com.mechanic.garage');
-define('IOS_APP', '');   // leave empty until confirmed
+
+// App Store. Both listings are published by OH-PEL AUTO LTD and were found in
+// search; the listing pages themselves could not be opened from the build
+// environment, so click each one once before relying on it.
+//
+// The country-neutral /app/id… form is deliberate: Apple sends each visitor to
+// their own storefront, which a hard-coded /jm/ does not.
+define('IOS_APP',         'https://apps.apple.com/app/id6754509101');  // customer app
+define('IOS_APP_MECHANIC','https://apps.apple.com/app/id6754508075');  // staff app
+
+// No App Store listing was found for the garage app (com.mechanic.garage).
+// It appears to be Android-only. Add IOS_APP_GARAGE here if that changes.
+define('IOS_APP_GARAGE', '');
+
+// NOTE: nothing on the site renders these yet. Every "Download the app" link
+// still points at Google Play, so an iPhone visitor is sent to a store they
+// cannot install from. Wiring that up is a separate change.
 
 define('SITE_URL', 'https://mechanic-connectja.mechanic-connect.net');
 
