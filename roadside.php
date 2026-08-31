@@ -13,7 +13,7 @@ require __DIR__ . '/includes/header.php';
       <p class="lede">Car won't start, tyre gone flat, or the vehicle stopped on you. Send the details and we'll guide you through requesting help.</p>
       <div class="btns">
         <a class="btn btn--red" href="<?= wa('I need roadside assistance') ?>">Request help on WhatsApp</a>
-        <a class="btn btn--white" href="<?= APP_CUSTOMER ?>">Request in the app</a>
+        <a class="btn btn--white" href="<?= store_url('customer') ?>">Request in the app</a>
       </div>
     </div>
   </section>

@@ -39,7 +39,7 @@ $t = in_array($_GET['t'] ?? '', ['provider', 'guide'], true) ? $_GET['t'] : 'par
     <div class="paths">
       <a class="pth pth--hot" href="<?= BASE ?>/roadside"><h3>Get roadside help</h3><p>Dead battery, flat tyre or a breakdown right now.</p><span class="act">Start here</span></a>
       <a class="pth" href="<?= BASE ?>/inspection"><h3>Book an inspection</h3><p>15-point vehicle inspection with OH-PEL Auto. J$1,500 in the app.</p><span class="act">See the offer</span></a>
-      <a class="pth" href="<?= APP_CUSTOMER ?>"><h3>Download the app</h3><p>Request service, compare quotes and pay securely.</p><span class="act">Get it on Google Play</span></a>
+      <a class="pth" href="<?= store_url('customer') ?>"><h3>Download the app</h3><p>Request service, compare quotes and pay securely.</p><span class="act"><?= store_cta('customer') ?></span></a>
     </div>
   </div>
 </section>

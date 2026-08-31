@@ -59,8 +59,8 @@ require __DIR__ . '/includes/header.php';
         <div class="feat"><h3>Get paid securely</h3><p>Once the customer confirms the job, funds release to your Mechanic Connect wallet.</p></div>
       </div>
       <div class="btns">
-        <a class="btn btn--blue" href="<?= APP_MECHANIC ?>">Mechanic App</a>
-        <a class="btn btn--blue" href="<?= APP_GARAGE ?>">Garage App</a>
+        <a class="btn btn--blue" href="<?= store_url('mechanic') ?>">Mechanic App</a>
+        <a class="btn btn--blue" href="<?= store_url('garage') ?>">Garage App</a>
       </div>
     </div>
   </section>

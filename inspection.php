@@ -27,7 +27,7 @@ require __DIR__ . '/includes/header.php';
         <tr><th>Carried out by</th><td>OH-PEL AUTO LIMITED</td></tr>
       </table>
       <div class="btns">
-        <a class="btn btn--blue" href="<?= APP_CUSTOMER ?>">Book in the app</a>
+        <a class="btn btn--blue" href="<?= store_url('customer') ?>">Book in the app</a>
         <a class="btn btn--line" href="<?= wa('I\'d like to book the J$1,500 15-point inspection') ?>">Ask about booking</a>
       </div>
     </div>

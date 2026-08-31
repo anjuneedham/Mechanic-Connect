@@ -58,6 +58,43 @@ define('LEAD_LOG', !empty($_SERVER['DOCUMENT_ROOT'])
     ? dirname($_SERVER['DOCUMENT_ROOT']) . '/mc-leads.csv'
     : dirname(dirname(__DIR__)) . '/mc-leads.csv');
 
+/**
+ * Which app store to send this visitor to.
+ *
+ * Decided server-side from the user agent so it works with JavaScript off and
+ * without a flash of the wrong link. An iPhone or iPad gets the App Store;
+ * everything else gets Google Play. Where no iOS listing exists — the garage
+ * app — it falls back to Play on its own, which is why the emptiness check
+ * matters rather than just the platform.
+ *
+ * $which is 'customer', 'mechanic' or 'garage'.
+ */
+function on_ios() {
+    return (bool) preg_match('/iPad|iPhone|iPod/i', $_SERVER['HTTP_USER_AGENT'] ?? '');
+}
+
+function store_has_ios($which = 'customer') {
+    $ios = ['customer' => IOS_APP, 'mechanic' => IOS_APP_MECHANIC, 'garage' => IOS_APP_GARAGE];
+    return on_ios() && !empty($ios[$which]);
+}
+
+function store_url($which = 'customer') {
+    $ios  = ['customer' => IOS_APP,      'mechanic' => IOS_APP_MECHANIC, 'garage' => IOS_APP_GARAGE];
+    $play = ['customer' => APP_CUSTOMER, 'mechanic' => APP_MECHANIC,     'garage' => APP_GARAGE];
+    return store_has_ios($which) ? $ios[$which] : ($play[$which] ?? APP_CUSTOMER);
+}
+
+/** "App Store" or "Google Play", matching whatever store_url() just returned. */
+function store_name($which = 'customer') {
+    return store_has_ios($which) ? 'App Store' : 'Google Play';
+}
+
+/** The same thing as a call to action. Apple takes a definite article, Google
+ *  does not, so the two cannot share one template string. */
+function store_cta($which = 'customer') {
+    return store_has_ios($which) ? 'Get it on the App Store' : 'Get it on Google Play';
+}
+
 function wa($text = '') {
     $u = 'https://wa.me/' . WA_NUMBER;
     return $text ? $u . '?text=' . rawurlencode($text) : $u;

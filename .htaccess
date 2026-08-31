@@ -46,6 +46,13 @@ Options -Indexes
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # The app-store links are chosen from the user agent, so the HTML genuinely
+  # differs between an iPhone and everything else. Without this a shared cache
+  # could hand an Android visitor the page built for an iPhone.
+  <FilesMatch "\.php$">
+    Header append Vary "User-Agent"
+  </FilesMatch>
 </IfModule>
 
 # ── Caching ───────────────────────────────────────────────

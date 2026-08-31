@@ -13,7 +13,7 @@ require __DIR__ . '/includes/header.php';
       <p class="lede">No more calling around, no more guessing prices, no more wondering who to trust. Request service, compare quotes from verified providers, choose who works on your vehicle, and pay securely.</p>
       <div class="btns">
         <a class="btn btn--white" href="<?= wa() ?>">Ask a question on WhatsApp</a>
-        <a class="btn btn--line" href="<?= APP_CUSTOMER ?>">Download the app</a>
+        <a class="btn btn--line" href="<?= store_url('customer') ?>">Download the app</a>
       </div>
     </div>
   </section>
@@ -65,11 +65,14 @@ require __DIR__ . '/includes/header.php';
       <div class="plate-h"><h2>Get the app</h2></div>
       <p class="lede" style="margin-top:14px">Free to download. Free to use. You only pay for the work you ask for.</p>
       <div class="btns">
-        <a class="btn btn--white" href="<?= APP_CUSTOMER ?>">Customer App on Google Play</a>
+        <a class="btn btn--white" href="<?= IOS_APP ?>">Customer App on the App&nbsp;Store</a>
+        <a class="btn btn--white" href="<?= APP_CUSTOMER ?>">Customer App on Google&nbsp;Play</a>
       </div>
-      <!-- AMBER: the OH-PEL street banner carries an App Store badge, but no iOS listing URL
-           has been supplied and the existing website links to Google Play only. Do not add an
-           App Store badge or an iOS claim until the live App Store URL is confirmed. -->
+      <!-- Both listings are live and recorded in includes/config.php: the customer
+           app at id6754509101 and the staff app at id6754508075, both published by
+           OH-PEL AUTO LTD. Elsewhere on the site store_url() picks the store from the
+           visitor's device; here there is room to name both outright. There is still
+           no App Store listing for the garage app. -->
     </div>
   </section>
 </div>

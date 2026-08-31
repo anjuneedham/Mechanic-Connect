@@ -48,10 +48,10 @@ require __DIR__ . '/includes/header.php';
           <p>Take jobs, quote, get paid. Apprenticeship enquiries welcome too.</p>
           <span class="act">Apply to join</span>
         </a>
-        <a class="pth" href="<?= APP_CUSTOMER ?>">
+        <a class="pth" href="<?= store_url('customer') ?>">
           <h3>Download the Customer App</h3>
           <p>Request service, compare quotes and pay securely from your phone.</p>
-          <span class="act">Get it on Google Play</span>
+          <span class="act"><?= store_cta('customer') ?></span>
         </a>
       </div>
     </div>
