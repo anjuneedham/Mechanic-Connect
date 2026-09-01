@@ -61,7 +61,7 @@ p{margin:0 0 15px;font-size:16.5px}
 }
 
 /* ── buttons ────────────────────────────── */
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:13px 24px;
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;min-height:52px;padding:13px 24px;
   font-family:var(--fd);font-weight:700;font-size:19.5px;text-transform:uppercase;text-decoration:none;
   border:0;cursor:pointer;letter-spacing:.03em;text-align:center;border-radius:5px}
 .btn--red{background:var(--red);color:#fff;box-shadow:0 3px 0 var(--red-d)}
@@ -213,3 +213,26 @@ details .ans ul{margin:0 0 12px;padding-left:20px}
 .page.on{display:block}
 .skip{position:absolute;left:-9999px}
 .skip:focus{left:8px;top:8px;z-index:99;background:var(--red);color:#fff;padding:10px 15px;font-weight:700;border-radius:4px}
+
+
+/* ── Brand mark and app artwork ─────────────────────────────────────────────
+   The logo is supplied on black and its plate is part of that black, so the
+   knocked-out PNG only holds together on a dark surface. The header is
+   var(--ink), which is what it was drawn for. Do not put it on white. */
+.logo__img{display:block;height:44px;width:auto}
+@media(min-width:1000px){.logo__img{height:54px}}
+
+/* App icon sitting inside a download button. */
+.btn__ico{width:30px;height:30px;border-radius:7px;flex:none;display:block}
+
+/* App icon heading a path card. */
+.pth__ico{width:54px;height:54px;border-radius:12px;display:block;margin-bottom:13px;
+  box-shadow:0 2px 6px rgba(8,53,111,.22)}
+
+/* A photograph beside a block of text. Portrait source, so it takes the
+   narrower column and the copy keeps the wider one. */
+.shot{display:grid;gap:26px;align-items:start}
+@media(min-width:860px){.shot{grid-template-columns:1fr 300px}}
+.shot__img{width:100%;height:auto;display:block;border-radius:9px;border:3px solid var(--chrome);
+  box-shadow:0 4px 14px rgba(8,53,111,.18)}
+.shot__cap{font-size:14px;color:var(--grey);margin:9px 0 0;line-height:1.45}

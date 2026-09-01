@@ -65,8 +65,8 @@ require __DIR__ . '/includes/header.php';
       <div class="plate-h"><h2>Get the app</h2></div>
       <p class="lede" style="margin-top:14px">Free to download. Free to use. You only pay for the work you ask for.</p>
       <div class="btns">
-        <a class="btn btn--white" href="<?= IOS_APP ?>">Customer App on the App&nbsp;Store</a>
-        <a class="btn btn--white" href="<?= APP_CUSTOMER ?>">Customer App on Google&nbsp;Play</a>
+        <a class="btn btn--white" href="<?= IOS_APP ?>"><img class="btn__ico" src="<?= BASE ?>/assets/img/app-customer.jpg" alt="" width="256" height="256" loading="lazy">App&nbsp;Store</a>
+        <a class="btn btn--white" href="<?= APP_CUSTOMER ?>"><img class="btn__ico" src="<?= BASE ?>/assets/img/app-customer.jpg" alt="" width="256" height="256" loading="lazy">Google&nbsp;Play</a>
       </div>
       <!-- Both listings are live and recorded in includes/config.php: the customer
            app at id6754509101 and the staff app at id6754508075, both published by

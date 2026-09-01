@@ -20,6 +20,8 @@ require __DIR__ . '/includes/header.php';
   <section class="sec">
     <div class="wrap">
       <div class="plate-h"><h2>Who we're looking for</h2></div>
+      <div class="shot">
+        <div>
       <ul class="checks">
         <li>Experienced mechanics</li>
         <li>Mobile mechanics</li>
@@ -30,6 +32,14 @@ require __DIR__ . '/includes/header.php';
         <li>People interested in learning — apprenticeship enquiries welcome</li>
       </ul>
       <p style="margin-top:20px">We're especially interested in mechanics who can assist with repairs, diagnostics, mobile services and roadside assistance. All providers complete registration and verification before being activated.</p>
+        </div>
+        <figure style="margin:0">
+          <img class="shot__img" src="<?= BASE ?>/assets/img/mechanic.jpg"
+               alt="A Mechanic Connect provider carrying out an oil change on a vehicle raised on a lift."
+               width="738" height="1314" loading="lazy" decoding="async">
+          <figcaption class="shot__cap">A verified provider on the Mechanic Connect network, Kingston.</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -59,8 +69,8 @@ require __DIR__ . '/includes/header.php';
         <div class="feat"><h3>Get paid securely</h3><p>Once the customer confirms the job, funds release to your Mechanic Connect wallet.</p></div>
       </div>
       <div class="btns">
-        <a class="btn btn--blue" href="<?= store_url('mechanic') ?>">Mechanic App</a>
-        <a class="btn btn--blue" href="<?= store_url('garage') ?>">Garage App</a>
+        <a class="btn btn--blue" href="<?= store_url('mechanic') ?>"><img class="btn__ico" src="<?= BASE ?>/assets/img/app-mechanic.jpg" alt="" width="256" height="256" loading="lazy">Mechanic App</a>
+        <a class="btn btn--blue" href="<?= store_url('garage') ?>"><img class="btn__ico" src="<?= BASE ?>/assets/img/app-garage.jpg" alt="" width="256" height="256" loading="lazy">Garage App</a>
       </div>
     </div>
   </section>

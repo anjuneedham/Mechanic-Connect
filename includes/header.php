@@ -54,10 +54,8 @@ $nav = [
 <header class="hdr">
   <div class="hdr__in">
     <a class="logo" href="<?= BASE ?>/">
-      <span>
-        <span class="logo__plate">Mechanic Connect</span>
-        <span class="logo__sub">Jamaica</span>
-      </span>
+      <img class="logo__img" src="<?= BASE ?>/assets/img/logo.png"
+           alt="Mechanic Connect JA" width="520" height="382">
     </a>
     <button class="navtog" id="navtog" aria-expanded="false" aria-controls="nav">Menu</button>
   </div>

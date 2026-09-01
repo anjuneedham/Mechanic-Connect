@@ -49,7 +49,7 @@ require __DIR__ . '/includes/header.php';
           <span class="act">Apply to join</span>
         </a>
         <a class="pth" href="<?= store_url('customer') ?>">
-          <h3>Download the Customer App</h3>
+          <img class="pth__ico" src="<?= BASE ?>/assets/img/app-customer.jpg" alt="" width="256" height="256" loading="lazy"><h3>Download the Customer App</h3>
           <p>Request service, compare quotes and pay securely from your phone.</p>
           <span class="act"><?= store_cta('customer') ?></span>
         </a>
