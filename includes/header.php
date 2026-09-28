@@ -20,7 +20,7 @@ $nav = [
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= e($TITLE) ?></title>
 <meta name="description" content="<?= e($DESC) ?>">
-<?php if (IS_STAGING): ?>
+<?php if (IS_STAGING || !empty($NOINDEX)): ?>
 <!-- Running from a subfolder, so this is a staging copy. Keep it out of
      search results entirely — a second indexed copy of the site would
      compete with the real one. -->
